@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog index{% endblock %}
+
+{% block body %}
+
+        {% for blog in blogs %}
+            <div class="col-md-6">
+            <div class="blog-entry ftco-animate">
+                <a href="="{{ path('blog_show', {'id': blog.id}) }}" class="blog-image">
+                    <img src='{{ asset("images/" ~ blog.image  ) }}' class="img-fluid" alt="">
+                </a>
+                <div class="text py-4">
+                    <div class="meta">
+                        <div><a href="#">{{ blog.dateCreate ? blog.dateCreate|date('Y-m-d H:i:s') : '' }}</a></div>
+                        <div><a href="#">{{ blog.author }}</a></div>
+                    </div>
+                    <h3 class="heading"><a href="#">{{ blog.title }}</a></h3>
+                    <p>{{ blog.description }}</p>
+                </div>
+            </div>
+            </div>
+        {% else %}
+                {{ 'no records found' | trans }}
+
+        {% endfor %}
+
+{% endblock %}
