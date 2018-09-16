@@ -7481,7 +7481,7 @@ header {
     header .colorlib-navbar-brand .colorlib-logo {
       font-size: 20px;
       text-transform: uppercase;
-      color: #fff;
+      color: #000;
       font-weight: 400;
       letter-spacing: 5px;
       display: block;
@@ -7521,11 +7521,11 @@ header {
     display: inline-block;
     width: 40px;
     height: 2px;
-    color: #fff;
+    color: #000;
     font: bold 14px/.4 Helvetica;
     text-transform: uppercase;
     text-indent: -55px;
-    background: #fff;
+    background: #000;
     -webkit-transition: all .2s ease-out;
     -o-transition: all .2s ease-out;
     transition: all .2s ease-out; }
@@ -7536,14 +7536,14 @@ header {
       content: '';
       width: 40px;
       height: 2px;
-      background: #fff;
+      background: #000;
       position: absolute;
       left: 0;
       -webkit-transition: 0.2s;
       -o-transition: 0.2s;
       transition: 0.2s; }
       .menu-show .colorlib-nav-toggle i::before, .menu-show .colorlib-nav-toggle i::after {
-        background: #fff; }
+        background: #000; }
       @media screen and (prefers-reduced-motion: reduce) {
         .colorlib-nav-toggle i::before, .colorlib-nav-toggle i::after {
           -webkit-transition: none;
@@ -7715,12 +7715,12 @@ header {
         background: #ee76ad;
         opacity: 0; }
       .owl-carousel.home-slider .slider-item .slider-text {
-        color: #fff;
+        color: #000;
         height: calc(100vh - 0);
         min-height: 700px; }
         .owl-carousel.home-slider .slider-item .slider-text h1 {
           font-size: 40px;
-          color: #fff;
+          color: #000;
           line-height: 1.2;
           font-weight: 400; }
           @media (max-width: 991.98px) {
@@ -7730,7 +7730,7 @@ header {
           font-size: 20px;
           line-height: 1.5;
           font-weight: 300;
-          color: rgba(255, 255, 255, 0.8); }
+          color: black; }
           .owl-carousel.home-slider .slider-item .slider-text p strong {
             font-weight: 700; }
             .owl-carousel.home-slider .slider-item .slider-text p strong a {
@@ -7741,7 +7741,7 @@ header {
           letter-spacing: 1px;
           font-weight: 400; }
           .owl-carousel.home-slider .slider-item .slider-text .cat span {
-            bordeR: 1px solid #fff;
+            bordeR: 1px solid #000;
             padding: 4px; }
         .owl-carousel.home-slider .slider-item .slider-text .breadcrumbs {
           text-transform: uppercase;
@@ -7750,7 +7750,7 @@ header {
           .owl-carousel.home-slider .slider-item .slider-text .breadcrumbs span {
             border-bottom: 2px solid rgba(255, 255, 255, 0.1); }
             .owl-carousel.home-slider .slider-item .slider-text .breadcrumbs span a {
-              color: #fff; }
+              color: #000; }
     .owl-carousel.home-slider .owl-nav .owl-prev span,
     .owl-carousel.home-slider .owl-nav .owl-next span {
       color: #fff; }
@@ -8715,3 +8715,14 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+.page-container.float-right{
+  padding-top:0;
+  padding-left: 60px;
+}
+
+#show_img{
+  width:45%;
+  float:right;
+  margin-left:5px;
+}

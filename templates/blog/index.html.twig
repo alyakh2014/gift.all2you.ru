@@ -1,21 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Blog index{% endblock %}
+{% block title %}{{ 'Blog index' | trans }}{% endblock %}
 
 {% block body %}
 
         {% for blog in blogs %}
             <div class="col-md-6">
             <div class="blog-entry ftco-animate">
-                <a href="="{{ path('blog_show', {'id': blog.id}) }}" class="blog-image">
+                <a href="{{  path('blog_show', {'id': blog.id}) }}" class="blog-image">
                     <img src='{{ asset("images/" ~ blog.image  ) }}' class="img-fluid" alt="">
                 </a>
                 <div class="text py-4">
                     <div class="meta">
-                        <div><a href="#">{{ blog.dateCreate ? blog.dateCreate|date('Y-m-d H:i:s') : '' }}</a></div>
+                        <div><a href="#">{{ blog.dateCreate ? blog.dateCreate|date('Y-m-d') : '' }}</a></div>
                         <div><a href="#">{{ blog.author }}</a></div>
                     </div>
-                    <h3 class="heading"><a href="#">{{ blog.title }}</a></h3>
+                    <h3 class="heading"><a href="{{ path('blog_show', {'id': blog.id}) }}">{{ blog.title }}</a></h3>
                     <p>{{ blog.description }}</p>
                 </div>
             </div>
@@ -24,5 +24,21 @@
                 {{ 'no records found' | trans }}
 
         {% endfor %}
+
+    <div class="row mt-5">
+        <div class="col text-center">
+            <div class="block-27">
+                <ul>
+                    <li><a href="#">&lt;</a></li>
+                    <li class="active"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&gt;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

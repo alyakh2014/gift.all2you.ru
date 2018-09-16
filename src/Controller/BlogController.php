@@ -20,6 +20,7 @@ class BlogController extends AbstractController
      */
     public function index(BlogRepository $blogRepository): Response
     {
+        $page = $request->query->get('page', 1);
         return $this->render('blog/index.html.twig', ['blogs' => $blogRepository->findAll()]);
     }
 

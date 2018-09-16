@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="Blog index">
                 <source>Blog index</source>
-                <target>Статьи</target>
+                <target>Всё о подарках</target>
             </trans-unit>
             <trans-unit id="no records found">
                 <source>no records found</source>
@@ -25,6 +25,10 @@
             <trans-unit id="edit">
                 <source>edit</source>
                 <target>Редактировать</target>
+            </trans-unit>
+            <trans-unit id="Author">
+                <source>Author</source>
+                <target>Автор</target>
             </trans-unit>
         </body>
     </file>

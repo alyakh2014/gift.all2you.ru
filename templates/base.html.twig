@@ -52,7 +52,7 @@
             <div class="row no-gutters">
                 <div class="col-md-12">
                     <div class="colorlib-navbar-brand">
-                        <a class="colorlib-logo" href="index.html">Libro</a>
+                        <a class="colorlib-logo" href="{{ path('blog_index') }}">best-gift.ru</a>
                     </div>
                     <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
                 </div>
@@ -63,48 +63,24 @@
     <section class="ftco-fixed clearfix">
         <div class="image js-fullheight float-left">
             <div class="home-slider owl-carousel js-fullheight">
-                <div class="slider-item js-fullheight" style="background-image: url('/public/images/bg_1.jpg');">
+                {% for i in 1..3 %}
+                <div class="slider-item js-fullheight" style="background-image: url('{{ asset("images/bg_" ~ i ~ ".jpg")  }}')">
                     <div class="overlay"></div>
                     <div class="container">
                         <div class="row slider-text align-items-end" data-scrollax-parent="true">
                             <div class="col-md-10 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                                <p class="cat"><span>Fashion</span></p>
-                                <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Popular Lifestyle with Fashion &amp; Modeling</h1>
+                                <p class="cat"><span>У. Уолкот</span></p>
+                                <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Каждый подарок, даже самый маленький, становится великим даром, если ты вручаешь его с любовью.</h1>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="slider-item js-fullheight" style="background-image: url('/public/images/bg_2.jpg');">
-                    <div class="overlay"></div>
-                    <div class="container">
-                        <div class="row slider-text align-items-end" data-scrollax-parent="true">
-                            <div class="col-md-10 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                                <p class="cat"><span>Model</span></p>
-                                <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Canadian Girl make your world go round</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="page-container float-right">
             <div class="row">
                 {% block body %}{% endblock %}
-            </div>        <div class="row mt-5">
-                <div class="col text-center">
-                    <div class="block-27">
-                        <ul>
-                            <li><a href="#">&lt;</a></li>
-                            <li class="active"><span>1</span></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">&gt;</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
 
