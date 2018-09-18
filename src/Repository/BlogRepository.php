@@ -6,6 +6,7 @@ use App\Entity\Blog;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Blog|null find($id, $lockMode = null, $lockVersion = null)
@@ -18,6 +19,23 @@ class BlogRepository extends ServiceEntityRepository
     public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Blog::class);
+    }
+
+    /**
+     * @param string|null $term
+     */
+    public function getWithSearchQueryBuilder(): QueryBuilder
+    //public function getWithSearchQueryBuilder(?string $term): QueryBuilder
+    {
+        $qb = $this->createQueryBuilder('c');
+       /* if ($term) {
+            $qb->andWhere('c.title LIKE :term OR c.author LIKE :term')
+                ->setParameter('term', '%' . $term . '%')
+            ;
+        }*/
+        return $qb
+            ->orderBy('c.id', 'asc')
+            ;
     }
 
 //    /**

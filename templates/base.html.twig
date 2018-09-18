@@ -30,16 +30,15 @@
             <div class="row d-flex justify-content-end">
                 <div class="col-md-12 px-5">
                     <ul class="mb-5">
-                        <li class="active"><a href="index.html"><span>Home</span></a></li>
-                        <li><a href="fashion.html"><span>Fashion</span></a></li>
-                        <li><a href="model.html"><span>Model</span></a></li>
-                        <li><a href="travel.html"><span>Travel</span></a></li>
-                        <li><a href="about.html"><span>About us</span></a></li>
-                        <li><a href="contact.html"><span>Contact</span></a></li>
+                        <li class="active"><a href="{{ path('blog_index') }}"><span>{{ 'Home' | trans }}</span></a></li>
+                        <li><a href="{{ path('about_blog') }}"><span>{{ 'Blog' | trans }}</span></a></li>
+                        <li><a href="{{ path('about_partners') }}"><span>{{ 'Partners' | trans }}</span></a></li>
+                        <li><a href="{{ path('about_index') }}"><span>{{ 'About us' | trans }}</span></a></li>
+                        <li><a href="{{ path('about_contacts') }}"><span>{{ 'Contact' | trans }}</span></a></li>
                     </ul>
                 </div>
                 <div class="col px-5 copyright">
-                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <br> | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> {{ 'All rights reserved' | trans }} <br> {{ 'This site is made with ' | trans }} <i class="icon-heart" aria-hidden="true"></i> {{ ' for you' | trans }}</p>
                 </div>
             </div>
         </div>
@@ -81,6 +80,9 @@
         <div class="page-container float-right">
             <div class="row">
                 {% block body %}{% endblock %}
+            </div>
+            <div class="row" id="blog_main_nav">
+            {% block pagination %}{% endblock %}
             </div>
         </div>
 

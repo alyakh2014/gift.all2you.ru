@@ -30,6 +30,38 @@
                 <source>Author</source>
                 <target>Автор</target>
             </trans-unit>
+            <trans-unit id="All rights reserved">
+                <source>All rights reserved</source>
+                <target>Все права защищены</target>
+            </trans-unit>
+            <trans-unit id="This site is made with ">
+                <source>This site is made with </source>
+                <target>Этот сайт сделан с </target>
+            </trans-unit>
+            <trans-unit id=" for you">
+                <source> for you</source>
+                <target>для Вас</target>
+            </trans-unit>
+            <trans-unit id="Home">
+                <source>Home</source>
+                <target>Главная</target>
+            </trans-unit>
+            <trans-unit id="Blog">
+                <source>Blog</source>
+                <target>Блог</target>
+            </trans-unit>
+            <trans-unit id="Partners">
+                <source>Partners</source>
+                <target>Партнёры</target>
+            </trans-unit>
+            <trans-unit id="About us">
+                <source>About us</source>
+                <target>О нас</target>
+            </trans-unit>
+            <trans-unit id="Contact">
+                <source>Contact</source>
+                <target>Контакты</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -4,8 +4,12 @@
 
 {% block body %}
 
-        {% for blog in blogs %}
-            <div class="col-md-6">
+ <div id="rowFlex">
+        {% for blog in pagination %}
+            {% if loop.index0 == 0 or loop.index0 == 3  %}
+                <div class="column">
+            {% endif %}
+            <!--div class="col-md-6 col-sm-12"-->
             <div class="blog-entry ftco-animate">
                 <a href="{{  path('blog_show', {'id': blog.id}) }}" class="blog-image">
                     <img src='{{ asset("images/" ~ blog.image  ) }}' class="img-fluid" alt="">
@@ -19,26 +23,18 @@
                     <p>{{ blog.description }}</p>
                 </div>
             </div>
-            </div>
+            {% if loop.index0 == 2 or loop.index0 == 5 or loop.index0 == (loop.length-1) %}
+               </div>
+            {% endif %}
+            <!--/div-->
         {% else %}
                 {{ 'no records found' | trans }}
 
         {% endfor %}
+ </div>
+{% endblock %}
 
-    <div class="row mt-5">
-        <div class="col text-center">
-            <div class="block-27">
-                <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
 
+{% block pagination %}
+    {{ knp_pagination_render(pagination) }}
 {% endblock %}
