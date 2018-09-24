@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 /**
  * @Route("/blog")
@@ -74,10 +75,10 @@ class BlogController extends AbstractController
         $response = new Blogresponse();
         $response->setDate(new \DateTime());
         $form = $this->createFormBuilder($response)
+                ->add('blog_id', HiddenType::class)
                 ->add('text', TextType::class)
-                ->add('date', DateType::class)
                 ->add('username', TextType::class)
-                ->add('blog_id', IntegerType::class)
+                ->add('email', TextType::class)
                 ->add('save', SubmitType::class, array('label'=>'Оставить отзыв'))
                 ->getForm();
 

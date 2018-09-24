@@ -19,15 +19,17 @@
         <a href="{{ path('blog_index') }}">{{ "back to list" | trans }}</a><br>
 
 
-        <h3>Оставьте свой отзыв</h3>
+        <h3>{{ 'Leave response' | trans }}</h3>
         {{ form_start(form) }}
             {{ form_errors(form) }}
 
             <div class="form-group">
-                {{ form_widget(form.blog_id, {'attr':{'type':'integer'}}) }}
+                {{ form_errors(form.blog_id) }}
+                {{ form_widget(form.blog_id, {'attr':{'class':'form-control', 'value': blog.id}}) }}
+                {{ form_help(form.blog_id) }}
             </div>
             <div class="form-group">
-                {{ form_label( form.text) }}
+                {{ form_label(form.text) }}
                 {{ form_errors(form.text) }}
                 {{ form_widget(form.text, {'attr':{'class':'form-control'}}) }}
                 {{ form_help(form.text) }}
@@ -38,7 +40,12 @@
                 {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
                 {{ form_help(form.username) }}
             </div>
-
+        <div class="form-group form-inline">
+            {{ form_label(form.email) }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.email) }}
+        </div>
             <div class="form-group">
                 {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
             </div>
