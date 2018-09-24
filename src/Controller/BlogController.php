@@ -6,17 +6,19 @@ use App\Entity\Blogresponse;
 use App\Entity\Blog;
 use App\Form\BlogType;
 use App\Repository\BlogRepository;
+use App\Repository\BlogresponseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 /**
  * @Route("/blog")
  */
@@ -69,20 +71,31 @@ class BlogController extends AbstractController
     /**
      * @Route("/{id}", name="blog_show", methods="GET")
      */
-    public function show(Blog $blog): Response
+    public function show(
+        Blog $blog,
+        BlogresponseRepository $brr
+        ): Response
     {
 
-        $response = new Blogresponse();
-        $response->setDate(new \DateTime());
-        $form = $this->createFormBuilder($response)
+        //Получаем все отзывы по данному блогу
+        $otzivy = $this->getDoctrine()
+                    ->getRepository(Blogresponse::class)
+                    ->findBy(["blog_id" => $blog]);
+
+        //Формируем форму
+        $blog_response = new Blogresponse();
+
+        $blog_response->setDate(new \DateTime());
+        $form = $this->createFormBuilder($blog_response)
+                ->setAction($this->generateUrl('blogresponse_new'))
                 ->add('blog_id', HiddenType::class)
-                ->add('text', TextType::class)
+                ->add('text', TextareaType::class)
                 ->add('username', TextType::class)
-                ->add('email', TextType::class)
+                ->add('email', EmailType::class)
                 ->add('save', SubmitType::class, array('label'=>'Оставить отзыв'))
                 ->getForm();
 
-        return $this->render('blog/show.html.twig', ['blog' => $blog, 'form'=>$form->createView()]);
+        return $this->render('blog/show.html.twig', ['blog' => $blog, 'otzivy'=> $otzivy, 'form'=>$form->createView()]);
     }
 
     /**

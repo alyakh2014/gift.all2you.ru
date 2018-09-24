@@ -8787,8 +8787,14 @@ textarea.form-control {
  .page-container.float-right .blog-entry{
    padding: 5px;
   }
+}
 
+.flash-notice{
+  color: limegreen;
+  font-style: italic;
+}
 
-
+.otziv_user, .otziv_date{
+  text-align: right;
 }
 

@@ -9,7 +9,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 /**
  * @Route("/blogresponse")
  */
@@ -29,15 +35,29 @@ class BlogresponseController extends AbstractController
     public function new(Request $request): Response
     {
         $blogresponse = new Blogresponse();
-        $form = $this->createForm(BlogresponseType::class, $blogresponse);
+        $blogresponse->setDate(new \DateTime());
+        $form = $this->createFormBuilder($blogresponse)
+            ->add('blog_id', HiddenType::class)
+            ->add('text', TextareaType::class)
+            ->add('username', TextType::class)
+            ->add('email', EmailType::class)
+            ->add('save', SubmitType::class, array('label'=>'Оставить отзыв'))
+            ->getForm();
+
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($blogresponse);
             $em->flush();
-
-            return $this->redirectToRoute('blogresponse_index');
+            $this->addFlash(
+                'notice',
+                'Отзыв успешно отправлен!'
+            );
+            //return $this->redirectToRoute('blogresponse_index');
+            $task = $form->getData();
+            return $this->redirectToRoute('blog_show', ['id' => $blogresponse->getBlogId()]);
         }
 
         return $this->render('blogresponse/new.html.twig', [

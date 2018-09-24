@@ -78,6 +78,14 @@
                 <source>Leave response</source>
                 <target>Оставить отзыв</target>
             </trans-unit>
+            <trans-unit id="Email">
+                <source>Email</source>
+                <target>Ваш e-mail</target>
+            </trans-unit>
+            <trans-unit id="Your comments">
+                <source>Your comments</source>
+                <target>Комментарии</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

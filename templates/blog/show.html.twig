@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ blog.title }}{% endblock %}
-
 {% block body %}
     <h1>{{ blog.title }}</h1>
     <div col-sm-12>
@@ -18,6 +17,24 @@
         </div>
         <a href="{{ path('blog_index') }}">{{ "back to list" | trans }}</a><br>
 
+        {% for message in app.flashes('notice') %}
+            <div class="flash-notice">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+        <h3>{{ "Your comments" | trans }}</h3>
+        <table class="table table-striped">
+        {% for otziv in otzivy %}
+            <tr class="otziv">
+                <td>
+                    <div class="otziv_text">{{ otziv.text }}</div>
+                    <div class="otziv_user">{{ otziv.username }}</div>
+                    <div class="otziv_date">{{ otziv.date ? otziv.date|date('d-m-Y') : '' }}</div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
 
         <h3>{{ 'Leave response' | trans }}</h3>
         {{ form_start(form) }}
@@ -31,16 +48,16 @@
             <div class="form-group">
                 {{ form_label(form.text) }}
                 {{ form_errors(form.text) }}
-                {{ form_widget(form.text, {'attr':{'class':'form-control'}}) }}
+                {{ form_widget(form.text, {'attr':{'class':'form-control', 'rows': 8}}) }}
                 {{ form_help(form.text) }}
             </div>
-            <div class="form-group form-inline">
+            <div class="form-group">
                 {{ form_label(form.username) }}
                 {{ form_errors(form.username) }}
                 {{ form_widget(form.username, {'attr': {'class': 'form-control'}}) }}
                 {{ form_help(form.username) }}
             </div>
-        <div class="form-group form-inline">
+        <div class="form-group">
             {{ form_label(form.email) }}
             {{ form_errors(form.email) }}
             {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}

@@ -16,7 +16,7 @@ class BlogresponseType extends AbstractType
             ->add('text')
             ->add('date')
             ->add('username')
-            ->add('useremail')
+            ->add('email')
         ;
     }
 
