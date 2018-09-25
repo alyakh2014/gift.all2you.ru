@@ -1,0 +1,18 @@
+{% extends 'base_oneside.html.twig' %}
+
+{% block title %}Edit Partners{% endblock %}
+
+{% block body %}
+
+    <h1>Edit Partners</h1>
+
+    <div class="col-sm-12">
+        {{ include('partners/_form.html.twig', {'button_label': 'Update'}) }}
+    </div>
+    <div class="col-sm-12">
+        <a href="{{ path('partners_index') }}">back to list</a>
+    </div>
+    <div class="col-sm-12">
+        {{ include('partners/_delete_form.html.twig') }}
+    </div>
+{% endblock %}

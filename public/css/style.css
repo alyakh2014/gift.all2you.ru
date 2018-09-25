@@ -8798,3 +8798,36 @@ textarea.form-control {
   text-align: right;
 }
 
+
+#partners_list td, #partners_list th{
+  text-align:center;
+}
+
+#partners_list th{
+  font-size:0.8em;
+}
+
+.partners_picture{
+  width:50%;
+}
+
+#main_menu_oneside ul{
+  list-style: none;
+  display:flex;
+  padding-left:0;
+}
+
+#main_menu_oneside ul li{
+  margin: 5px 3px;
+  padding:5px 8px;
+  background: #ccc;
+  border:1px solid #9e9e9e;
+  border-radius:0 15px;
+}
+
+#main_menu_oneside ul li a{
+  color:black;
+}
+.full_width{
+  width:100%;
+}

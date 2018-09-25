@@ -86,6 +86,58 @@
                 <source>Your comments</source>
                 <target>Комментарии</target>
             </trans-unit>
+            <trans-unit id="Create new Partners">
+                <source>Create new Partners</source>
+                <target>Добавление нового партнёра</target>
+            </trans-unit>
+            <trans-unit id="Name">
+                <source>Name</source>
+                <target>Название компании партнёра</target>
+            </trans-unit>
+            <trans-unit id="Picture">
+                <source>Picture</source>
+                <target>Название картинки с лого партнёра</target>
+            </trans-unit>
+            <trans-unit id="Href">
+                <source>Href</source>
+                <target>Ссылка на сайт партнёра</target>
+            </trans-unit>
+            <trans-unit id="Description">
+                <source>Description</source>
+                <target>Описание деятельности партнёра</target>
+            </trans-unit>
+            <trans-unit id="back to partnerslist">
+                <source>back to partnerslist</source>
+                <target>К списку партнёров</target>
+            </trans-unit>
+            <trans-unit id="Partners index">
+                <source>Partners index</source>
+                <target>Cписк партнёров</target>
+            </trans-unit>
+            <trans-unit id="Partner">
+                <source>Partner</source>
+                <target>Партнёр</target>
+            </trans-unit>
+            <trans-unit id="Partner logo">
+                <source>Partner logo</source>
+                <target>Логотип</target>
+            </trans-unit>
+            <trans-unit id="actions">
+                <source>actions</source>
+                <target>Действие</target>
+            </trans-unit>
+            <trans-unit id="show_partner">
+                <source>show_partner</source>
+                <target>Детали</target>
+            </trans-unit>
+            <trans-unit id="edit_partner">
+                <source>edit_partner</source>
+                <target>Изменить</target>
+            </trans-unit>
+            <trans-unit id="Create new partner">
+                <source>Create new partner</source>
+                <target>Добавить нового партнёра</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

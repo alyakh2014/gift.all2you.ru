@@ -1,0 +1,41 @@
+{% extends 'base_oneside.html.twig' %}
+
+{% block title %}{{ 'Partners index' | trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'Partners index' | trans }}</h1>
+
+    <table class="table" id="partners_list">
+        <thead>
+            <tr>
+                <th>{{ 'Id' | trans }}</th>
+                <th>{{ 'Partner' | trans }}</th>
+                <th>{{ 'Partner logo' | trans }}</th>
+                <th>{{ 'Href' | trans }}</th>
+                <th>{{ 'Description' | trans }}</th>
+                <th>{{ 'actions' | trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for partner in partners %}
+            <tr>
+                <td>{{ partner.id }}</td>
+                <td>{{ partner.name }}</td>
+                <td><img class="partners_picture" src="{{ asset("images/partners/" ~ partner.picture  ) }}"/></td>
+                <td>{{ partner.href }}</td>
+                <td>{{ partner.description }}</td>
+                <td>
+                    <a href="{{ path('partners_show', {'id': partner.id}) }}">{{ 'show_partner' | trans }}</a>
+                    <a href="{{ path('partners_edit', {'id': partner.id}) }}">{{ 'edit_partner' | trans }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">{{ 'no records found' | trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('partners_new') }}">{{ 'Create new partner' | trans }}</a>
+{% endblock %}

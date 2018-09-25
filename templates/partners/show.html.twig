@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partners{% endblock %}
+
+{% block body %}
+    <h1>{{ 'Partner' | trans }}: {{ partner.name }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ partner.id }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Partner' | trans }}</th>
+                <td>{{ partner.name }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Partner logo' | trans }}</th>
+                <td>{{ partner.picture }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Href' | trans }}</th>
+                <td>{{ partner.href }}</td>
+            </tr>
+            <tr>
+                <th>{{ 'Description' | trans }}</th>
+                <td>{{ partner.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="full_width">
+        <a href="{{ path('partners_edit', {'id': partner.id}) }}">{{ 'edit_partner' | trans }}</a>
+    </div>
+    <div class="full_width">
+        <a href="{{ path('partners_index') }}">{{ 'back to partnerslist' | trans }}</a>
+    </div>
+    <br><br/>
+    <div class="full_width">
+        {{ include('partners/_delete_form.html.twig') }}
+    </div>
+
+{% endblock %}

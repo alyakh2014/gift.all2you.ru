@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Partners;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+use App\Repository\PartnersRepository;
 
 class AboutController extends AbstractController
 {
@@ -27,8 +32,20 @@ class AboutController extends AbstractController
     /**
      * @Route("/partners", name="about_partners")
      */
-    public function partners(){
-        return $this->render('about/partners.html.twig');
+    public function partners(
+        PartnersRepository $partnersRepository,
+        Request $request,
+        PaginatorInterface $paginator
+    ): Response
+    {
+
+        $queryBuilder = $partnersRepository->getWithSearchQueryBuilder();
+        $pagination = $paginator->paginate(
+            $queryBuilder, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            6/*limit per page*/
+        );
+        return $this->render('about/partners.html.twig', ['pagination' => $pagination]);
     }
 
     /**
