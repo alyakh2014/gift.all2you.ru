@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 /**
  * @Route("/feedback")
@@ -28,16 +31,37 @@ class FeedbackController extends AbstractController
      */
     public function new(Request $request): Response
     {
+
+        //Формируем форму такую как на странице contacts
         $feedback = new Feedback();
-        $form = $this->createForm(FeedbackType::class, $feedback);
+        $form = $this->createFormBuilder($feedback)
+            ->setAction($this->generateUrl('feedback_new'))
+            ->add('name', TextType::class, array('label'=>'Your name'))
+            ->add('email', TextType::class)
+            ->add('subject', TextareaType::class)
+            ->add('message', TextareaType::class)
+            ->add('save', SubmitType::class, array('label'=>'Send new message'))
+            ->getForm();
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($feedback);
             $em->flush();
+            $this->addFlash(
+                'notice',
+                'Ваше обращение принято!'
+            );
 
-            return $this->redirectToRoute('feedback_index');
+            // создание объекта сообщения
+            $message = $this->getMailer()
+                ->compose('info@gift_all2you.com', $request->get('email'), 'Спасибо за Ваше обращение', 'Спасибо за обращение, мы обязательно свяжемся с Вами!')
+            ;
+            // отправка сообщения
+            $this->getMailer()->send($message);
+
+            return $this->redirectToRoute('about_contacts');
         }
 
         return $this->render('feedback/new.html.twig', [

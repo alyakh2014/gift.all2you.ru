@@ -2,13 +2,21 @@
 
 namespace App\Controller;
 
-use App\Entity\Partners;
+use App\Entity\Feedback;
+use App\Form\FeedbackType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Repository\PartnersRepository;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
 class AboutController extends AbstractController
 {
@@ -51,9 +59,20 @@ class AboutController extends AbstractController
     /**
      * @Route("/contacts", name="about_contacts")
      */
-    public function contacts(){
-        return $this->render('about/contacts.html.twig');
+    public function contacts(): Response
+    {
+
+        //Формируем форму
+        $feedback = new Feedback();
+       // $feedback->setDate(new \DateTime());
+        $form=$this->createFormBuilder($feedback)
+            ->setAction($this->generateUrl('feedback_new'))
+            ->add('name', TextType::class, array('label'=>'Your name'))
+            ->add('email', TextType::class)
+            ->add('subject', TextareaType::class)
+            ->add('message', TextareaType::class)
+            ->add('save', SubmitType::class, array('label'=>'Send new message'))
+            ->getForm();
+        return $this->render('feedback/new.html.twig', ['form'=> $form->createView()]);
     }
-
-
 }

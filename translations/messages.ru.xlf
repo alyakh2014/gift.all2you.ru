@@ -138,6 +138,42 @@
                 <source>Create new partner</source>
                 <target>Добавить нового партнёра</target>
             </trans-unit>
+            <trans-unit id="Feedback">
+                <source>Feedback</source>
+                <target>Обратная связь</target>
+            </trans-unit>
+            <trans-unit id="Subject">
+                <source>Subject</source>
+                <target>Тема обращения</target>
+            </trans-unit>
+            <trans-unit id="Message">
+                <source>Message</source>
+                <target>Текст обращения</target>
+            </trans-unit>
+            <trans-unit id="Contact Information">
+                <source>Contact Information</source>
+                <target>Контактная информация</target>
+            </trans-unit>
+            <trans-unit id="Contact phone">
+                <source>Contact phone</source>
+                <target>Телефон для связи</target>
+            </trans-unit>
+            <trans-unit id="Contact email">
+                <source>Contact email</source>
+                <target>E-mail для связи</target>
+            </trans-unit>
+            <trans-unit id="Our website">
+                <source>Our website</source>
+                <target>Наш сайт</target>
+            </trans-unit>
+            <trans-unit id="Your name">
+                <source>Your name</source>
+                <target>Ваше имя</target>
+            </trans-unit>
+            <trans-unit id="Send new message">
+                <source>Send new message</source>
+                <target>Отправить сообщение</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

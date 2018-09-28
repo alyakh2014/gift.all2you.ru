@@ -1,11 +1,66 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}New Feedback{% endblock %}
-
+{% block title %}{{ 'Feedback' | trans }}{% endblock %}
+{% block headscripts %}
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    {{ parent() }}
+{% endblock %}
 {% block body %}
-    <h1>Create new Feedback</h1>
+    <h1>{{ 'Feedback' | trans }}</h1>
+</div>
+<div class="row">
+    <div class="row d-flex mb-5 contact-info">
+        <div class="col-md-12 mb-4">
+            <h2 class="h4">{{ 'Contact Information' | trans }}</h2>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-4">
+            <p><span>{{ 'Contact phone' | trans }}:</span><br> <a href="tel://1234567920">+ 7(968)111-11-11</a></p>
+        </div>
+        <div class="col-md-4">
+            <p><span>{{ 'Contact email' | trans }}:</span><br> <a href="mailto:info@yoursite.com">alyakh2014@gmail.com</a></p>
+        </div>
+        <div class="col-md-4">
+            <p><span>{{ 'Our website' | trans }}</span><br> <a href="#">gift.all2you.ru</a></p>
+        </div>
+    </div>
+
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
 
     {{ include('feedback/_form.html.twig') }}
+</div>
+<div class="row">
+    <div id="map" class="col-sm-12">
 
-    <a href="{{ path('feedback_index') }}">back to list</a>
+    </div>
+</div>
+    <script type="text/javascript">
+        // Функция ymaps.ready() будет вызвана, когда
+        // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+        ymaps.ready(init);
+        function init(){
+            // Создание карты.
+            var myMap = new ymaps.Map("map", {
+                // Координаты центра карты.
+                // Порядок по умолчнию: «широта, долгота».
+                // Чтобы не определять координаты центра карты вручную,
+                // воспользуйтесь инструментом Определение координат.
+                center: [55.654330, 37.609577],
+                // Уровень масштабирования. Допустимые значения:
+                // от 0 (весь мир) до 19.
+                zoom: 15
+            });
+
+            var myPlacemark = new ymaps.Placemark([55.654330, 37.609577], {
+                hintContent: 'Наше местоположение',
+                balloonContent: 'Мы находимся по данному адресу'
+            });
+
+            myMap.geoObjects.add(myPlacemark);
+        }
+    </script>
+<div>
 {% endblock %}

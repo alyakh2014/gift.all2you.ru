@@ -55,8 +55,6 @@ class BlogresponseController extends AbstractController
                 'notice',
                 'Отзыв успешно отправлен!'
             );
-            //return $this->redirectToRoute('blogresponse_index');
-            $task = $form->getData();
             return $this->redirectToRoute('blog_show', ['id' => $blogresponse->getBlogId()]);
         }
 

@@ -8831,3 +8831,13 @@ textarea.form-control {
 .full_width{
   width:100%;
 }
+
+#feedback_form{
+  display: inline!important;
+  width:100%;
+  float:none;
+}
+
+#feedback_form div.form-group{
+  width: 100%;
+}
