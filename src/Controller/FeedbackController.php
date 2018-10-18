@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Swift_Mailer;
+use Swift_Message;
 
 /**
  * @Route("/feedback")
@@ -29,7 +31,10 @@ class FeedbackController extends AbstractController
     /**
      * @Route("/new", name="feedback_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(
+        Request $request,
+        \Swift_Mailer $mailer
+    ): Response
     {
 
         //Формируем форму такую как на странице contacts
@@ -55,11 +60,16 @@ class FeedbackController extends AbstractController
             );
 
             // создание объекта сообщения
-            $message = $this->getMailer()
-                ->compose('info@gift_all2you.com', $request->get('email'), 'Спасибо за Ваше обращение', 'Спасибо за обращение, мы обязательно свяжемся с Вами!')
-            ;
+            mail('alyakh2014@gmail.com', 'Just mail', 'Just message body');
+
+
+            $message = (new \Swift_Message())
+                ->setFrom('info@gift.all2you.ru')
+                ->setTo($request->get('email'))
+                ->setSubject("Theme of the message")
+                ->setBody("Body of the message");
             // отправка сообщения
-            $this->getMailer()->send($message);
+            $mailer->send($message);
 
             return $this->redirectToRoute('about_contacts');
         }

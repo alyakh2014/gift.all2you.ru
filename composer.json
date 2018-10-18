@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "knplabs/knp-paginator-bundle": "^2.8",
         "sensio/framework-extra-bundle": "^5.1",
+        "sensiolabs/security-checker": "^5.0",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "*",
         "symfony/console": "*",
@@ -19,14 +20,13 @@
         "symfony/process": "*",
         "symfony/security-bundle": "*",
         "symfony/serializer-pack": "*",
-        "symfony/swiftmailer-bundle": "^3.1",
+        "symfony/swiftmailer-bundle": "^3.2",
         "symfony/twig-bundle": "*",
         "symfony/validator": "*",
         "symfony/web-link": "*",
         "symfony/yaml": "*"
     },
     "require-dev": {
-        "sensiolabs/security-checker": "^4.1",
         "symfony/debug-pack": "*",
         "symfony/dotenv": "*",
         "symfony/maker-bundle": "^1.0",
