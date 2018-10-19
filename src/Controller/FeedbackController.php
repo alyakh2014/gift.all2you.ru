@@ -12,8 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Swift_Mailer;
-use Swift_Message;
 
 /**
  * @Route("/feedback")
@@ -60,14 +58,19 @@ class FeedbackController extends AbstractController
             );
 
             // создание объекта сообщения
-            mail('alyakh2014@gmail.com', 'Just mail', 'Just message body');
+            //mail('alyakh2014@gmail.com', 'Just mail', 'Just message body');
 
-
-            $message = (new \Swift_Message())
+            $message = (new \Swift_Message("Hello mail"))
                 ->setFrom('info@gift.all2you.ru')
-                ->setTo($request->get('email'))
-                ->setSubject("Theme of the message")
-                ->setBody("Body of the message");
+                ->setTo($form->get("email")->getData())
+                ->setSubject($form->get("subject")->getData())
+                ->setBody($this->renderView(
+                // templates/emails/registration.html.twig
+                    'emails/feedback.html.twig',
+                    array('name' => $form->get("name")->getData(), 'message'=>$form->get("message")->getData())
+                ),
+                    'text/html'
+                );
             // отправка сообщения
             $mailer->send($message);
 
