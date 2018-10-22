@@ -26,5 +26,8 @@ $container->loadFromExtension('security', array(
     'access_control' => array(
         // потребовать ROLE_ADMIN для /admin*
         array('path' => '^/admin', 'roles' => 'ROLE_ADMIN'),
+        array('path' => '^/login$', 'roles' => 'IS_AUTHENTICATED_ANONYMOUSLY'),
+        array('path' => '^/register', 'roles' => 'IS_AUTHENTICATED_ANONYMOUSLY'),
+        array('path' => '^/resetting', 'roles' => 'IS_AUTHENTICATED_ANONYMOUSLY')
     ),
 ));
