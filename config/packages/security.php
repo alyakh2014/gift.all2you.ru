@@ -23,4 +23,8 @@ $container->loadFromExtension('security', array(
             'http_basic'=>null
         ),
     ),
+    'access_control' => array(
+        // потребовать ROLE_ADMIN для /admin*
+        array('path' => '^/admin', 'roles' => 'ROLE_ADMIN'),
+    ),
 ));

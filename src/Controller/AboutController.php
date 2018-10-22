@@ -75,4 +75,13 @@ class AboutController extends AbstractController
             ->getForm();
         return $this->render('feedback/new.html.twig', ['form'=> $form->createView()]);
     }
+
+    /**
+     * @Route("/admin")
+     */
+    public function admin(): Response
+    {
+        return new Response('<html><body>Admin page!</body></html>');
+    }
+
 }
