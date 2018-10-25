@@ -7627,7 +7627,10 @@ header {
   cursor: pointer;
   top: 0;
   left: 50%;
-  margin-left: -50px; }
+  margin-left: -50px;
+
+}
+
   @media (max-width: 991.98px) {
     .colorlib-nav-toggle {
       left: 100%; } }
@@ -8787,57 +8790,8 @@ textarea.form-control {
  .page-container.float-right .blog-entry{
    padding: 5px;
   }
-}
-
-.flash-notice{
-  color: limegreen;
-  font-style: italic;
-}
-
-.otziv_user, .otziv_date{
-  text-align: right;
-}
 
 
-#partners_list td, #partners_list th{
-  text-align:center;
+
 }
 
-#partners_list th{
-  font-size:0.8em;
-}
-
-.partners_picture{
-  width:50%;
-}
-
-#main_menu_oneside ul{
-  list-style: none;
-  display:flex;
-  padding-left:0;
-}
-
-#main_menu_oneside ul li{
-  margin: 5px 3px;
-  padding:5px 8px;
-  background: #ccc;
-  border:1px solid #9e9e9e;
-  border-radius:0 15px;
-}
-
-#main_menu_oneside ul li a{
-  color:black;
-}
-.full_width{
-  width:100%;
-}
-
-#feedback_form{
-  display: inline!important;
-  width:100%;
-  float:none;
-}
-
-#feedback_form div.form-group{
-  width: 100%;
-}
