@@ -8,7 +8,7 @@
 use App\Entity\User;
 
 // config/packages/security.php
-$container->loadFromExtension('security', array(
+    $container->loadFromExtension('security', array(
         'encoders'=>array(
             User::class => array(
                 'algorithm' => 'bcrypt',
@@ -34,24 +34,10 @@ $container->loadFromExtension('security', array(
             'form_login'=>array(
                 'login_path'=>'login',
                 'check_path'=>'login',
-            )
+            ),
+            'logout' => array('path' => 'security_logout', 'target' => '/blog')
         ),
     ),
-/*    'providers' => array(
-        'in_memory' => array(
-            'memory' => null,
-        ),
-    ),
-    'firewalls' => array(
-        'dev' => array(
-            'pattern'   => '^/(_(profiler|wdt)|css|images|js)/',
-            'security'  => false,
-        ),
-        'main' => array(
-            'anonymous' => null,
-            'http_basic'=>null
-        ),
-    ),*/
     'access_control' => array(
         // потребовать ROLE_ADMIN для /admin*
         array('path' => '^/login', 'role' => 'IS_AUTHENTICATED_ANONYMOUSLY'),
