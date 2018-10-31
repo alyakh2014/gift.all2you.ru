@@ -25,14 +25,8 @@ class BlogRepository extends ServiceEntityRepository
      * @param string|null $term
      */
     public function getWithSearchQueryBuilder(): QueryBuilder
-    //public function getWithSearchQueryBuilder(?string $term): QueryBuilder
     {
         $qb = $this->createQueryBuilder('c');
-       /* if ($term) {
-            $qb->andWhere('c.title LIKE :term OR c.author LIKE :term')
-                ->setParameter('term', '%' . $term . '%')
-            ;
-        }*/
         return $qb
             ->orderBy('c.id', 'asc')
             ;

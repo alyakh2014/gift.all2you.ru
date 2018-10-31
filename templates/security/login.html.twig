@@ -3,6 +3,7 @@
 
 {% extends 'base.html.twig' %}
 {% block title %}{{ 'AuthForm' | trans }}{% endblock %}
+
 {% block body %}
     <div class="col-sm-12">
     <h3>{{ 'AuthForm' | trans }}</h3>
@@ -24,9 +25,9 @@
     {#
         Если вы хотите контролировать URL, на который будет перенаправлен
         пользователь при успешном входе (больше деталей ниже)
-        <input type="hidden" name="_target_path" value="account" />
-    #}
 
+    #}
+    <input type="hidden" name="_target_path" value="{{ redirect_params }}" />
     <button type="submit">{{ 'Login' | trans }}</button>
 </form>
     </div>

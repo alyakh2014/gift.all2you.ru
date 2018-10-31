@@ -27,6 +27,9 @@ class SecurityController extends AbstractController
         Request $request,
         AuthenticationUtils $authUtils): Response
     {
+        //Получаем параметр редиректа
+        $redirectTo = $request->query->get('redirect_to');
+
         // получить ошибку входа, если она есть
         $error = $authUtils->getLastAuthenticationError();
 
@@ -36,6 +39,7 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', array(
             'last_username' => $lastUsername,
             'error'         => $error,
+            'redirect_params' =>$redirectTo
         ));
     }
 
