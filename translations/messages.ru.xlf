@@ -78,6 +78,14 @@
                 <source>Leave response</source>
                 <target>Оставить отзыв</target>
             </trans-unit>
+            <trans-unit id="Your comments">
+                <source>Your comments</source>
+                <target>Комментарии к данному посту</target>
+            </trans-unit>
+            <trans-unit id="No comments yet">
+                <source>No comments yet</source>
+                <target>Вы можете стать первым, кто оставит отзыв к посту</target>
+            </trans-unit>
             <trans-unit id="Register yourself">
                 <source>Register yourself</source>
                 <target>Заполните форму регистрации</target>
@@ -85,6 +93,50 @@
             <trans-unit id="Register!">
                 <source>Register!</source>
                 <target>Зарегистрироваться</target>
+            </trans-unit>
+            <trans-unit id="Email">
+                <source>Email</source>
+                <target>Ваш E-mail</target>
+            </trans-unit>
+            <trans-unit id="Password">
+                <source>Password</source>
+                <target>Ваш пароль</target>
+            </trans-unit>
+            <trans-unit id="Repeat Password">
+                <source>Repeat Password</source>
+                <target>Повторите Ваш пароль</target>
+            </trans-unit>
+            <trans-unit id="AuthForm">
+                <source>AuthForm</source>
+                <target>Авторизация</target>
+            </trans-unit>
+            <trans-unit id="User E-mail:">
+                <source>User E-mail:</source>
+                <target>E-mail пользователя:</target>
+            </trans-unit>
+            <trans-unit id="Password:">
+                <source>Password:</source>
+                <target>Пароль</target>
+            </trans-unit>
+            <trans-unit id="Login">
+                <source>Login</source>
+                <target>Авторизоваться</target>
+            </trans-unit>
+            <trans-unit id="menu.logout">
+                <source>menu.logout</source>
+                <target>Выйти</target>
+            </trans-unit>
+            <trans-unit id="menu.user">
+                <source>menu.user</source>
+                <target>Личный кабинет</target>
+            </trans-unit>
+            <trans-unit id="action.sign_in">
+                <source>action.sign_in</source>
+                <target>Войти</target>
+            </trans-unit>
+            <trans-unit id="post.to_publish_a_comment">
+                <source>post.to_publish_a_comment</source>
+                <target>опубликовать комментарий</target>
             </trans-unit>
         </body>
     </file>

@@ -5,29 +5,36 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-    <h3>{{ 'Register yourself' | trans }}</h3>
+    <div class="col-sm-12">
+        <h3>{{ 'Register yourself' | trans }}</h3>
+    </div>
+    <div class="col-sm-12">
 {{ form_start(form) }}
 {{ form_errors(form) }}
 
     <div class="form-group">
+        {{ form_label(form.username) }}
         {{ form_errors(form.username) }}
         {{ form_widget(form.username, {'attr':{'class':'form-control'}}) }}
         {{ form_help(form.username) }}
     </div>
 
     <div class="form-group">
+        {{ form_label(form.email) }}
         {{ form_errors(form.email) }}
         {{ form_widget(form.email, {'attr':{'class':'form-control'}}) }}
         {{ form_help(form.email) }}
     </div>
 
     <div class="form-group">
+        {{ form_label(form.plainPassword.first) }}
         {{ form_errors(form.plainPassword.first) }}
         {{ form_widget(form.plainPassword.first, {'attr':{'class':'form-control'}}) }}
         {{ form_help(form.plainPassword.first) }}
     </div>
 
     <div class="form-group">
+        {{ form_label(form.plainPassword.second) }}
         {{ form_errors(form.plainPassword.second) }}
         {{ form_widget(form.plainPassword.second, {'attr':{'class':'form-control'}}) }}
         {{ form_help(form.plainPassword.second) }}
@@ -46,4 +53,5 @@
     </div>
     <button type="submit">{{ 'Register!' | trans }}</button>
 {{ form_end(form) }}
+    </div>
 {% endblock %}

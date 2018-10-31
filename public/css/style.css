@@ -8795,3 +8795,12 @@ textarea.form-control {
 
 }
 
+#user_link>li{
+  list-style: none;
+}
+
+.grey_bgr{
+  background:#eee;
+  padding:15px;
+}
+
