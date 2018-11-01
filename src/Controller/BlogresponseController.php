@@ -39,9 +39,9 @@ class BlogresponseController extends AbstractController
         $form = $this->createFormBuilder($blogresponse)
             ->add('blog_id', HiddenType::class)
             ->add('text', TextareaType::class)
-            ->add('username', TextType::class)
-            ->add('email', EmailType::class)
-            ->add('save', SubmitType::class, array('label'=>'Оставить отзыв'))
+            ->add('user_id', HiddenType::class)
+            ->add('email', HiddenType::class)
+            ->add('save', SubmitType::class, array('label'=>'Leave response'))
             ->getForm();
 
 

@@ -6,7 +6,9 @@
 
 {% block body %}
     <div class="col-sm-12">
-    <h3>{{ 'AuthForm' | trans }}</h3>
+            <h3>
+                {{ 'AuthForm' | trans }}
+            </h3>
     </div>
     <div class="col-sm-12">
 {% if error %}
@@ -28,7 +30,10 @@
 
     #}
     <input type="hidden" name="_target_path" value="{{ redirect_params }}" />
-    <button type="submit">{{ 'Login' | trans }}</button>
+    <button type="submit" class="btn btn-primary">{{ 'Login' | trans }}</button>
 </form>
+    </div>
+    <div class="col-sm-12" id="RegisterLinkCover">
+        {{ 'Have no account?' | trans }}<a href="{{ path('user_registration')  }}"> <span id="RegisterLink">{{ 'RegisterLink' | trans }}</span></a>
     </div>
 {% endblock %}

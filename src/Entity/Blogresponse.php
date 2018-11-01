@@ -38,9 +38,9 @@ class Blogresponse
     private $date;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="integer")
      */
-    private $username;
+    private $user_id;
 
     public function getId(): ?int
     {
@@ -95,14 +95,14 @@ class Blogresponse
         return $this;
     }
 
-    public function getUsername(): ?string
+    public function getUserId(): ?int
     {
-        return $this->username;
+        return $this->user_id;
     }
 
-    public function setUsername(string $username): self
+    public function setUserId(int $user_id): self
     {
-        $this->username = $username;
+        $this->user_id = $user_id;
 
         return $this;
     }

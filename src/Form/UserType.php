@@ -11,7 +11,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class UserType extends AbstractType
 {
@@ -19,16 +21,28 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('is_admin', HiddenType::class)
-            ->add('is_active', HiddenType::class)
             ->add('email', EmailType::class)
             ->add('username', TextType::class)
+            ->add('userage', NumberType::class)
+            ->add('isActive', HiddenType::class)
+            ->add('isAdmin', HiddenType::class)
+            ->add('gender', ChoiceType::class, array(
+                'choices'=>array(
+                    ''=>'',
+                    "Женский" => 'F',
+                    "Мужской"=> 'M'
+                )
+            ))
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             ))
+           // ->add('save', SubmitType::class, array('label'=>'Update'))
         ;
+
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

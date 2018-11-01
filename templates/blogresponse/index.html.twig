@@ -23,7 +23,7 @@
                 <td>{{ blogresponse.blogId }}</td>
                 <td>{{ blogresponse.text }}</td>
                 <td>{{ blogresponse.date ? blogresponse.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ blogresponse.username }}</td>
+                <td>{{ blogresponse.user_id }}</td>
                 <td>
                     <a href="{{ path('blogresponse_show', {'id': blogresponse.id}) }}">show</a>
                     <a href="{{ path('blogresponse_edit', {'id': blogresponse.id}) }}">edit</a>

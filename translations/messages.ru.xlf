@@ -138,6 +138,46 @@
                 <source>post.to_publish_a_comment</source>
                 <target>опубликовать комментарий</target>
             </trans-unit>
+            <trans-unit id="Update">
+                <source>Update</source>
+                <target>Обновить профиль</target>
+            </trans-unit>
+            <trans-unit id="Edit User">
+                <source>Edit User</source>
+                <target>Мой профиль</target>
+            </trans-unit>
+            <trans-unit id="Userage">
+                <source>Userage</source>
+                <target>Ваш возраст</target>
+            </trans-unit>
+            <trans-unit id="Gender">
+                <source>Gender</source>
+                <target>Ваш пол</target>
+            </trans-unit>
+            <trans-unit id="Man">
+                <source>Man</source>
+                <target>Мужской</target>
+            </trans-unit>
+            <trans-unit id="Woman">
+                <source>Woman</source>
+                <target>Женский</target>
+            </trans-unit>
+            <trans-unit id="RegisterLink">
+                <source>RegisterLink</source>
+                <target>Зарегистрируйтесь!</target>
+            </trans-unit>
+            <trans-unit id="Have no account?">
+                <source>Have no account?</source>
+                <target>У Вас нет аккаунта?</target>
+            </trans-unit>
+            <trans-unit id="Have an account?">
+                <source>Have an account?</source>
+                <target>У Вас уже есть аккаунт?</target>
+            </trans-unit>
+            <trans-unit id="LoginLink">
+                <source>LoginLink</source>
+                <target>Авторизоваться</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

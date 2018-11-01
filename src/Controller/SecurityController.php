@@ -27,9 +27,17 @@ class SecurityController extends AbstractController
         Request $request,
         AuthenticationUtils $authUtils): Response
     {
+
+        //Если пользователь уже авторизован
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('user_edit');
+        }
+
         //Получаем параметр редиректа
         $redirectTo = $request->query->get('redirect_to');
-
+        if(!$redirectTo || $redirectTo == ''){
+            $redirectTo = 'user_edit';
+        }
         // получить ошибку входа, если она есть
         $error = $authUtils->getLastAuthenticationError();
 
