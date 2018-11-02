@@ -25,7 +25,6 @@ class UserType extends AbstractType
             ->add('username', TextType::class)
             ->add('userage', NumberType::class)
             ->add('isActive', HiddenType::class)
-            ->add('isAdmin', HiddenType::class)
             ->add('gender', ChoiceType::class, array(
                 'choices'=>array(
                     ''=>'',

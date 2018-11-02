@@ -26,13 +26,9 @@
         {{ form_help(form.email) }}
     </div>
     <div class="form-group">
-        {{ form_widget(form.isAdmin, {'attr':{'value': 0}}) }}
-        {{ form_help(form.isAdmin) }}
-    </div>
-        <div class="form-group">
             {{ form_widget(form.isActive, {'attr':{'value': 1}}) }}
             {{ form_help(form.isActive) }}
-        </div>
+    </div>
     <div class="form-group">
         {{ form_label(form.gender) }}
         {{ form_errors(form.gender) }}

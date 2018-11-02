@@ -90,7 +90,7 @@ class BlogController extends AbstractController
                 ->setAction($this->generateUrl('blogresponse_new'))
                 ->add('blog_id', HiddenType::class)
                 ->add('text', TextareaType::class)
-                ->add('user_id', HiddenType::class)
+                ->add('user', HiddenType::class)
                 ->add('email', HiddenType::class)
                 ->add('save', SubmitType::class, array('label'=>'Оставить отзыв'))
                 ->getForm();

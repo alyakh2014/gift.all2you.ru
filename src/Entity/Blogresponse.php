@@ -40,7 +40,7 @@ class Blogresponse
     /**
      * @ORM\Column(type="integer")
      */
-    private $user_id;
+    private $user;
 
     public function getId(): ?int
     {
@@ -95,14 +95,14 @@ class Blogresponse
         return $this;
     }
 
-    public function getUserId(): ?int
+    public function getUser(): ?int
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId(int $user_id): self
+    public function setUser(int $user): self
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
 
         return $this;
     }
