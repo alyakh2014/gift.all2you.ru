@@ -8,7 +8,7 @@
     <h1>{{ 'Feedback' | trans }}</h1>
 </div>
 <div class="row">
-    <div class="row d-flex mb-5 contact-info">
+    <div class="row d-flex contact-info">
         <div class="col-md-12 mb-4">
             <h2 class="h4">{{ 'Contact Information' | trans }}</h2>
         </div>
@@ -29,7 +29,6 @@
             {{ message }}
         </div>
     {% endfor %}
-
     {{ include('feedback/_form.html.twig') }}
 </div>
 <div class="row">

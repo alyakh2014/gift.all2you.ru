@@ -8795,6 +8795,13 @@ textarea.form-control {
 
 }
 
+/* Common styles */
+
+.flash-notice{
+  color: green;
+  font-style: italic;
+}
+
 #user_link>li{
   list-style: none;
 }
@@ -8810,5 +8817,23 @@ textarea.form-control {
 
 #RegisterLinkCover{
     margin-top:15px;
+}
+
+/*Feedback page*/
+#feedback_form{
+  width:100%;
+}
+
+/*Partners page*/
+.partners_picture{
+  width:100%;
+}
+
+
+/*Blog detail page*/
+
+.otziv_user, .otziv_date{
+  text-align: right;
+  font-weight: 300;
 }
 

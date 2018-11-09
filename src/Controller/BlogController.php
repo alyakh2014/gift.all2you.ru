@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Blogresponse;
 use App\Entity\Blog;
+use App\Entity\User;
 use App\Form\BlogType;
 use App\Repository\BlogRepository;
 use App\Repository\BlogresponseRepository;
@@ -82,6 +83,18 @@ class BlogController extends AbstractController
                     ->getRepository(Blogresponse::class)
                     ->findBy(["blog_id" => $blog]);
 
+        $arrOtzivy = [];
+        foreach($otzivy as $key=>$item){
+            $arrOtzivy[$key]["id"] = $item->getId();
+            $arrOtzivy[$key]["blog_id"] = $item->getBlogId();
+            $arrOtzivy[$key]["email"] = $item->getEmail();
+            $arrOtzivy[$key]["text"] = $item->getText();
+            $arrOtzivy[$key]["date"] = $item->getDate();
+            $user = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findBy(['id'=>$item->getUser()]);
+            $arrOtzivy[$key]["user"] = $user[0]->getUsername();
+        }
         //Формируем форму
         $blog_response = new Blogresponse();
 
@@ -95,7 +108,7 @@ class BlogController extends AbstractController
                 ->add('save', SubmitType::class, array('label'=>'Оставить отзыв'))
                 ->getForm();
 
-        return $this->render('blog/show.html.twig', ['blog' => $blog, 'otzivy'=> $otzivy, 'form'=>$form->createView()]);
+        return $this->render('blog/show.html.twig', ['blog' => $blog, 'otzivy'=> $arrOtzivy, 'form'=>$form->createView()]);
     }
 
     /**
