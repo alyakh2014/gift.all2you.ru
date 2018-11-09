@@ -17,11 +17,7 @@
         </div>
         <a href="{{ path('blog_index') }}">{{ "back to list" | trans }}</a><br>
 
-        {% for message in app.flashes('notice') %}
-            <div class="flash-notice">
-                {{ message }}
-            </div>
-        {% endfor %}
+с
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {# Your new comment #}

@@ -6,6 +6,12 @@
     <div class="col-sm-12">
         <h1>{{ 'Edit User' | trans }}</h1>
     </div>
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     <div class="col-sm-12">
         {{ form_start(form, {'attr' : {'id' : 'edit_user_form'}}) }}
         {{ form_errors(form) }}
@@ -49,6 +55,7 @@
             {{ form_help(form.plainPassword.second) }}
         </div>
         <button type="submit" class="btn btn-primary">{{ 'Update' | trans }}</button>
+        <button class="btn btn-info"><a href="{{ path('user_change_password') }}">{{ 'Change password' | trans }}</a></button>
         {{ form_end(form) }}
        {# {{ include('user/_form.html.twig', {'button_label': 'Update' | trans}) }}#}
 

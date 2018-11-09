@@ -14,6 +14,8 @@ use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class UserType extends AbstractType
 {
@@ -25,6 +27,7 @@ class UserType extends AbstractType
             ->add('username', TextType::class)
             ->add('userage', NumberType::class)
             ->add('isActive', HiddenType::class)
+            ->add('isAdmin', HiddenType::class)
             ->add('gender', ChoiceType::class, array(
                 'choices'=>array(
                     ''=>'',
@@ -37,11 +40,11 @@ class UserType extends AbstractType
                 'first_options'  => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             ))
-           // ->add('save', SubmitType::class, array('label'=>'Update'))
+            // ->add('save', SubmitType::class, array('label'=>'Update'))
         ;
-
-
-
+            // $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+                // ... добавлеие имени поля при необходимости
+           //  });
     }
 
     public function configureOptions(OptionsResolver $resolver)
