@@ -26,8 +26,6 @@ class UserType extends AbstractType
             ->add('email', EmailType::class)
             ->add('username', TextType::class)
             ->add('userage', NumberType::class)
-            ->add('isActive', HiddenType::class)
-            ->add('isAdmin', HiddenType::class)
             ->add('gender', ChoiceType::class, array(
                 'choices'=>array(
                     ''=>'',
@@ -42,9 +40,15 @@ class UserType extends AbstractType
             ))
             // ->add('save', SubmitType::class, array('label'=>'Update'))
         ;
-            // $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
-                // ... добавлеие имени поля при необходимости
-           //  });
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            $user = $event->getData();
+            $form = $event->getForm();
+
+            if (!$user || null === $user->getId()) {
+                $form->add('isAdmin', HiddenType::class, array('attr'=>array('value'=> 0)));
+                $form->add('isActive', HiddenType::class, array('attr'=>array('value'=> 1)));
+            }
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver)

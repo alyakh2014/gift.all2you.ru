@@ -218,6 +218,10 @@
                 <source>Partners index</source>
                 <target>Наши партнёры</target>
             </trans-unit>
+            <trans-unit id="Change password">
+                <source>Change password</source>
+                <target>Изменить пароль</target>
+            </trans-unit>
          </body>
     </file>
 </xliff>

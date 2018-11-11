@@ -11,6 +11,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+
+
 
 /**
  * @Route("/profile")
@@ -78,17 +84,27 @@ class UserController extends AbstractController
      */
     public function changePassword(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
-         $user = $this->getUser();
+        $user = $this->getUser();
 
-         $form = $this->createForm(UserType::class);
+        $form = $this->createFormBuilder()
+            ->add('plainPassword', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'first_options'  => array('label' => 'Password'),
+                'second_options' => array('label' => 'Repeat Password'),
+            ))
+            ->getForm();
          $form->handleRequest($request);
 
          if ($form->isSubmitted() && $form->isValid()) {
-             $user->setPassword($encoder->encodePassword($user, $form->get('newPassword')->getData()));
+             $user->setPassword($encoder->encodePassword($user, $form->get('plainPassword')->getData()));
 
              $this->getDoctrine()->getManager()->flush();
+             $this->addFlash(
+                 'notice',
+                 'Пароль успешно измен!'
+             );
 
-             return $this->redirectToRoute('security_logout');
+             return $this->redirectToRoute('user_change_password');
          }
 
          return $this->render('user/change_password.html.twig', [

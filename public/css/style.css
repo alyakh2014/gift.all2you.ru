@@ -8837,3 +8837,10 @@ textarea.form-control {
   font-weight: 300;
 }
 
+.btn-primary>a{
+  color:white;
+}
+
+.btn-primary>a:hover, .btn-primary:hover>a{
+  color:#ee76ad;
+}

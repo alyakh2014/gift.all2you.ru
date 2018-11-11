@@ -36,6 +36,20 @@ class RegistrationController extends Controller
         // 2) обработайте отправку (произойдёт только в POST)
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $exitstUsers = $this->getDoctrine()->getRepository(User::class);
+            $exitstUser = $exitstUsers->findOneBy(['email' => $form->getData()->getEmail()]);
+            if($exitstUser && $exitstUser->getId() > 0 ){
+                $this->addFlash(
+                    'notice',
+                    'Пользователь с таким email уже существует!'
+                );
+
+                return $this->render(
+                    'registration/register.html.twig',
+                    array('form' => $form->createView())
+                );
+            }
+
 
             // 3) Зашифруйте пароль (вы также можете сделать это через слушатель Doctrine)
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
@@ -45,11 +59,14 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
+            $this->addFlash(
+                'notice',
+                'Вы успешно зарегистрировались! Пожалуйста, авторизуйтесь!'
+            );
             // ... сделайте любую другую работу - вроде отправки письма и др
             // может, установите "флеш" сообщение об успешном выполнении для пользователя
 
-            return $this->redirectToRoute('blog_index');
+            return $this->redirectToRoute('login');
         }
 
         return $this->render(

@@ -8,9 +8,17 @@
     <div class="col-sm-12">
         <h3>{{ 'Register yourself' | trans }}</h3>
     </div>
+
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
     <div class="col-sm-12">
-{{ form_start(form) }}
-{{ form_errors(form) }}
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
 
     <div class="form-group">
         {{ form_label(form.username) }}
