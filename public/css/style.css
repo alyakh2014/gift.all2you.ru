@@ -8844,3 +8844,35 @@ textarea.form-control {
 .btn-primary>a:hover, .btn-primary:hover>a{
   color:#ee76ad;
 }
+
+/* Left side of the site for mobile */
+a.js-colorlib-nav-toggle.colorlib-nav-toggle{
+  width:fit-content!important;
+}
+
+.home-slider-img-mobile{
+  display:none;
+}
+
+@media (max-width: 850px) {
+
+  .image.js-fullheight.float-left{
+    height: 0!important;
+  }
+
+  .home-slider.owl-carousel.js-fullheight{
+    display:none;
+  }
+
+  .home-slider-img-mobile{
+    display:block;
+  }
+
+  .home-slider-img-mobile>img{
+    width:100%!important;
+  }
+}
+
+.image.js-fullheight.float-left{
+  height:100%;
+}
