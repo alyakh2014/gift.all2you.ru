@@ -30,7 +30,7 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=64, unique=true)
+     * @ORM\Column(type="string", length=64)
      */
     private $password;
 
@@ -53,6 +53,11 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=1)
      */
     private $gender;
+
+    /**
+     * @ORM\Column(type="string", length=20)
+     */
+    private $role;
 
     /**
      * @Assert\NotBlank()
@@ -159,6 +164,20 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
+
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(string $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+
     /** @see \Serializable::serialize() */
     public function serialize()
     {
@@ -200,7 +219,7 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array('ROLE_USER', 'ROLE_ADMIN', 'ROLE_MANAGER');
     }
 
     public function eraseCredentials()
