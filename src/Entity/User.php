@@ -6,6 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -55,15 +56,33 @@ class User implements UserInterface, \Serializable
     private $gender;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $role;
+
+    /**
+     * @var Collection|Role[]
+     * @ORM\ManyToMany(targetEntity="Role")
+     * @ORM\JoinTable(
+     *      name="user_roles",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")}
+     * )
+     */
+    private $roles;
 
     /**
      * @Assert\NotBlank()
      * @Assert\Length(max=4096)
      */
     private $plainPassword;
+
+    public function __construct()
+    {
+        $this->isActive = true;
+        $this->roles = new ArrayCollection();
+        //$this->addRole((new Role())->getName());
+    }
 
     public function getId(): ?int
     {
@@ -164,19 +183,28 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-
-    public function getRole(): ?string
+    public function addRole(Role $role)
     {
-        return $this->role;
+        $this->roles->add($role);
     }
 
-    public function setRole(string $role): self
+    public function removeRole(Role $role)
     {
-        $this->role = $role;
-
-        return $this;
+        $this->roles->removeElement($role);
     }
 
+    public function getRoles()
+    {
+        foreach($this->roles->toArray() as $key=>&$tmpR){
+            $tempRole[] = $tmpR->getName();
+        }
+        return $tempRole;
+    }
+
+    public function setRoles(Collection $roles)
+    {
+        $this->roles = $roles;
+    }
 
     /** @see \Serializable::serialize() */
     public function serialize()
@@ -217,14 +245,8 @@ class User implements UserInterface, \Serializable
         return null;
     }
 
-    public function getRoles()
-    {
-        return array('ROLE_USER', 'ROLE_ADMIN', 'ROLE_MANAGER');
-    }
-
     public function eraseCredentials()
     {
     }
-
 
 }

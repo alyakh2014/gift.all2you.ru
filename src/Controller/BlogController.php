@@ -93,7 +93,12 @@ class BlogController extends AbstractController
             $user = $this->getDoctrine()
                 ->getRepository(User::class)
                 ->findBy(['id'=>$item->getUser()]);
-            $arrOtzivy[$key]["user"] = $user[0]->getUsername();
+           if(count($user) > 0 && $user[0]->getId() > 0){
+               echo "NAME: ".$user[0]->getUsername()."<br>";
+               $arrOtzivy[$key]["user"] = $user[0]->getUsername();
+           }else{
+               unset($arrOtzivy[$key]);
+           }
         }
         //Формируем форму
         $blog_response = new Blogresponse();

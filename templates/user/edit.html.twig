@@ -40,7 +40,7 @@
             {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
             {{ form_help(form.gender) }}
         </div>
-       <div class="form-group">
+{#       <div class="form-group">
             {{ form_errors(form.plainPassword.first) }}
             {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control', 'hidden':'hidden', 'value': app.user.password}}) }}
             {{ form_help(form.plainPassword.first) }}
@@ -49,7 +49,7 @@
             {{ form_errors(form.plainPassword.second) }}
             {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control', 'hidden':'hidden', 'value': app.user.password}}) }}
             {{ form_help(form.plainPassword.second) }}
-        </div>
+        </div>#}
         <button type="submit" class="btn btn-primary">{{ 'Update' | trans }}</button>
         <button class="btn btn-primary"><a href="{{ path('user_change_password') }}">{{ 'Change password' | trans }}</a></button>
         {{ form_end(form) }}
