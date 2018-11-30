@@ -55,10 +55,8 @@ class User implements UserInterface, \Serializable
      */
     private $gender;
 
-    /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $role;
+    // *  ** @ORM\Column(type="string", length=20, nullable=true)
+    //private $role;
 
     /**
      * @var Collection|Role[]
@@ -80,8 +78,9 @@ class User implements UserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
-        $this->roles = new ArrayCollection();
-        //$this->addRole((new Role())->getName());
+        echo $this->getRoles();
+        die();
+        $this->setRoles(new ArrayCollection(["ROLE_USER"]));
     }
 
     public function getId(): ?int

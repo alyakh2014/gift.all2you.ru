@@ -44,7 +44,6 @@ class UserController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-
             return $this->redirectToRoute('user_index');
         }
 
@@ -85,7 +84,6 @@ class UserController extends AbstractController
     public function changePassword(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $user = $this->getUser();
-
         $form = $this->createFormBuilder()
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
@@ -133,5 +131,4 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('user_index');
     }
-
 }
