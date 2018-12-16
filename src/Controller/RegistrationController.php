@@ -59,6 +59,12 @@ class RegistrationController extends Controller
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
+            //Устанавливаем пользователю роль по умолчанию. 2 - роль пользователя
+            $defrole = $this->getDoctrine()
+                ->getRepository(Role::class)
+                ->findOneBy(['name' => 'ROLE_USER']);
+             $user->setRoles([$defrole]);
+
             // 4) сохраните Пользователя!
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
