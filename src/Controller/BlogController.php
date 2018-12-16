@@ -94,8 +94,7 @@ class BlogController extends AbstractController
                 ->getRepository(User::class)
                 ->findBy(['id'=>$item->getUser()]);
            if(count($user) > 0 && $user[0]->getId() > 0){
-               echo "NAME: ".$user[0]->getUsername()."<br>";
-               $arrOtzivy[$key]["user"] = $user[0]->getUsername();
+             $arrOtzivy[$key]["user"] = $user[0]->getUsername();
            }else{
                unset($arrOtzivy[$key]);
            }

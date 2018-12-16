@@ -8876,3 +8876,17 @@ a.js-colorlib-nav-toggle.colorlib-nav-toggle{
 .image.js-fullheight.float-left{
   height:100%;
 }
+
+/* One-side template top menu */
+#main_menu_oneside .oneside_navigation_ul{
+  margin-top: 0;
+  display: flex;
+  justify-items: start;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+#main_menu_oneside .oneside_navigation_ul li{
+  margin-right: 15px;
+}

@@ -3,7 +3,6 @@
 namespace App\Form;
 
 use App\Entity\User;
-use http\Env\Request;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,7 +22,6 @@ class UserType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
         $builder
             ->add('email', EmailType::class)
             ->add('username', TextType::class)
@@ -40,7 +38,6 @@ class UserType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $user = $event->getData();
             $form = $event->getForm();
-
             if (!$user || null === $user->getId()) {
                $form ->add('plainPassword', RepeatedType::class, array(
                     'type' => PasswordType::class,
@@ -49,6 +46,8 @@ class UserType extends AbstractType
                 ));
                 $form->add('isAdmin', HiddenType::class, array('attr'=>array('value'=> 0)));
                 $form->add('isActive', HiddenType::class, array('attr'=>array('value'=> 1)));
+            }else{
+                $form ->add('plainPassword', HiddenType::class, array("attr"=>array('value'=>$user->getPassword())));
             }
         });
     }

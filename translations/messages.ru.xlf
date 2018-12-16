@@ -222,6 +222,38 @@
                 <source>Change password</source>
                 <target>Изменить пароль</target>
             </trans-unit>
+            <trans-unit id="User index">
+                <source>User index</source>
+                <target>Список всех пользователей</target>
+            </trans-unit>
+            <trans-unit id="UserPassword">
+                <source>UserPassword</source>
+                <target>Пароль пользователя</target>
+            </trans-unit>
+            <trans-unit id="IsActive">
+                <source>IsActive</source>
+                <target>Активность</target>
+            </trans-unit>
+            <trans-unit id="IsAdmin">
+                <source>IsAdmin</source>
+                <target>Права админа</target>
+            </trans-unit>
+            <trans-unit id="Age of user">
+                <source>Age of user</source>
+                <target>Возраст пользователя</target>
+            </trans-unit>
+            <trans-unit id="Gender of user">
+                <source>Gender  of user</source>
+                <target>Пол пользователя</target>
+            </trans-unit>
+            <trans-unit id="showUser">
+                <source>showUser</source>
+                <target>Детали</target>
+            </trans-unit>
+            <trans-unit id="editUser">
+                <source>editUser</source>
+                <target>Редактировать</target>
+            </trans-unit>
          </body>
     </file>
 </xliff>

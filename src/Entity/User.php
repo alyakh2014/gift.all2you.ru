@@ -7,6 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\Repository\RoleRepository;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -59,7 +60,7 @@ class User implements UserInterface, \Serializable
     //private $role;
 
     /**
-     * @var Collection|Role[]
+     * Many User have Many Roles
      * @ORM\ManyToMany(targetEntity="Role")
      * @ORM\JoinTable(
      *      name="user_roles",
@@ -78,9 +79,7 @@ class User implements UserInterface, \Serializable
     public function __construct()
     {
         $this->isActive = true;
-        echo $this->getRoles();
-        die();
-        $this->setRoles(new ArrayCollection(["ROLE_USER"]));
+        $this->roles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -194,10 +193,15 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        foreach($this->roles->toArray() as $key=>&$tmpR){
-            $tempRole[] = $tmpR->getName();
+        if(!empty($this->roles->toArray())){
+            foreach($this->roles->toArray() as $key=>&$tmpR){
+                $tempRole[] = $tmpR->getName();
+            }
+            return $tempRole;
+        }else{
+            return array('ROLE_USER');
         }
-        return $tempRole;
+
     }
 
     public function setRoles(Collection $roles)

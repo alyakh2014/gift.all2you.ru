@@ -10,11 +10,13 @@ namespace App\Controller;
 
 use App\Form\UserType;
 use App\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use App\Entity\Role;
 
 
 class RegistrationController extends Controller
@@ -49,6 +51,8 @@ class RegistrationController extends Controller
                     array('form' => $form->createView())
                 );
             }
+
+            //Зададим пользователю роль
 
 
             // 3) Зашифруйте пароль (вы также можете сделать это через слушатель Doctrine)

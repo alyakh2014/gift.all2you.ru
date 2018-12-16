@@ -23,7 +23,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container-fluid" style="padding:0 30px!important;">
         <div class="row">
             <div class="col-sm-12">
                 <a class="colorlib-logo" href="{{ path('blog_index') }}">best-gift.ru</a>
@@ -31,7 +31,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-sm-12" id="main_menu_oneside">
+            <div class="col-sm-12" id="main_menu_oneside" style="padding-left:0!important;">
                 <ul class="oneside_navigation_ul">
                     <li class="active"><a href="{{ path('blog_index') }}"><span>{{ 'Home' | trans }}</span></a></li>
                     <li><a href="{{ path('about_blog') }}"><span>{{ 'Blog' | trans }}</span></a></li>
@@ -42,7 +42,7 @@
             </div>
         </div>
     </div>
-<div class="container">
+<div class="container-fluid" style="padding:0 30px!important;">
     <div class="row">
         {% block body %}{% endblock %}
     </div>
