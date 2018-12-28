@@ -254,6 +254,14 @@
                 <source>editUser</source>
                 <target>Редактировать</target>
             </trans-unit>
+            <trans-unit id="Forgot password?">
+                <source>Forgot password?</source>
+                <target>Забыли пароль?</target>
+            </trans-unit>
+            <trans-unit id="Recover password">
+                <source>Recover password</source>
+                <target>Выслать пароль на почту</target>
+            </trans-unit>
          </body>
     </file>
 </xliff>

@@ -42,4 +42,7 @@
     <div class="col-sm-12" id="RegisterLinkCover">
         {{ 'Have no account?' | trans }}<a href="{{ path('user_registration')  }}"> <span id="RegisterLink">{{ 'RegisterLink' | trans }}</span></a>
     </div>
+    <div class="col-sm-12" id="RegisterLinkCover">
+        {{ 'Forgot password?' | trans }}<a href="{{ path('user_change_password')  }}"> <span id="RecoverPass">{{ 'Recover password' | trans }}</span></a>
+    </div>
 {% endblock %}

@@ -24,7 +24,7 @@ class RegistrationController extends Controller
     /**
      * @Route("/register", name="user_registration")
      */
-    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function registerAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer)
     {
 
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
@@ -52,9 +52,6 @@ class RegistrationController extends Controller
                 );
             }
 
-            //Зададим пользователю роль
-
-
             // 3) Зашифруйте пароль (вы также можете сделать это через слушатель Doctrine)
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
@@ -73,8 +70,23 @@ class RegistrationController extends Controller
                 'notice',
                 'Вы успешно зарегистрировались! Пожалуйста, авторизуйтесь!'
             );
-            // ... сделайте любую другую работу - вроде отправки письма и др
+            //Отправка письма об успешной регистрации
+
+
             // может, установите "флеш" сообщение об успешном выполнении для пользователя
+            $message = (new \Swift_Message("Регистрация на сайте gift.all2you.ru"))
+                ->setFrom('info@gift.all2you.ru')
+                ->setTo($form->getData()->getEmail())
+                ->setSubject("Спасибо за регистрация на сайте gift.all2you.ru")
+                ->setBody($this->renderView(
+                    'emails/registration.html.twig',
+                    array('name' => $form->getData()->getUsername())
+                ),
+                    'text/html'
+                );
+            // отправка сообщения
+            $mailer->send($message);
+            // создание объекта сообщения
 
             return $this->redirectToRoute('login');
         }

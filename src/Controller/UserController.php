@@ -54,6 +54,29 @@ class UserController extends AbstractController
     }
 
     /**
+     * @Route("/newPass", name="user_recoverpath", methods="GET|POST")
+     */
+    public function userRecoverPassword(Request $request): Response
+    {
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return $this->redirectToRoute('user_index');
+        }
+
+        return $this->render('user/new.html.twig', [
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
      * @Route("/edit", name="user_edit", methods="GET|POST")
      */
     public function edit(Request $request): Response
@@ -83,29 +106,16 @@ class UserController extends AbstractController
      */
     public function changePassword(Request $request, UserPasswordEncoderInterface $encoder): Response
     {
-        $user = $this->getUser();
-        $form = $this->createFormBuilder()
-            ->add('plainPassword', RepeatedType::class, array(
-                'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat Password'),
-            ))
-            ->getForm();
-         $form->handleRequest($request);
+        $userEmail = $request->query->get('email');
+        if($userEmail){
+            $userByEmail = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findBy(["email" => $userEmail]);
+        }else{
 
-         if ($form->isSubmitted() && $form->isValid()) {
-             $user->setPassword($encoder->encodePassword($user, $form->get('plainPassword')->getData()));
+        }
 
-             $this->getDoctrine()->getManager()->flush();
-             $this->addFlash(
-                 'notice',
-                 'Пароль успешно измен!'
-             );
-
-             return $this->redirectToRoute('user_change_password');
-         }
-
-         return $this->render('user/change_password.html.twig', [
+         return $this->render('user/new_password.html.twig', [
              'form' => $form->createView(),
          ]);
     }
