@@ -1,7 +1,7 @@
 {# app/Resources/views/security/login.html.twig #}
 {# ... вы скорее всего расширите ваш базовый шаблон, вроде base.html.twig #}
 
-{% extends 'base.html.twig' %}
+{% extends 'baseadd.html.twig' %}
 {% block title %}{{ 'AuthForm' | trans }}{% endblock %}
 
 {% block body %}
@@ -43,6 +43,6 @@
         {{ 'Have no account?' | trans }}<a href="{{ path('user_registration')  }}"> <span id="RegisterLink">{{ 'RegisterLink' | trans }}</span></a>
     </div>
     <div class="col-sm-12" id="RegisterLinkCover">
-        {{ 'Forgot password?' | trans }}<a href="{{ path('user_change_password')  }}"> <span id="RecoverPass">{{ 'Recover password' | trans }}</span></a>
+        {{ 'Forgot password?' | trans }}<a href="{{ path('user_recoverpath')  }}"> <span id="RecoverPass">{{ 'Recover password' | trans }}</span></a>
     </div>
 {% endblock %}

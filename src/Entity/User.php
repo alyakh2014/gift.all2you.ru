@@ -76,9 +76,15 @@ class User implements UserInterface, \Serializable
      */
     private $plainPassword;
 
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $controlString;
+
     public function __construct()
     {
         $this->isActive = true;
+        $this->setControlString($this->generateCStr());
         $this->roles = new ArrayCollection();
     }
 
@@ -248,8 +254,22 @@ class User implements UserInterface, \Serializable
         return null;
     }
 
+    public function setControlString($str): self
+    {
+        $this->controlString = $str;
+        return $this;
+    }
+
+    public function getControlString(): ?string
+    {
+        return $this->controlString;
+    }
+
+    public function generateCStr(){
+        return md5(random_int(0,100).time().random_int(100,999));
+    }
+
     public function eraseCredentials()
     {
     }
-
 }

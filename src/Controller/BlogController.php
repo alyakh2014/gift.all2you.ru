@@ -20,6 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 /**
  * @Route("/blog")
  */
@@ -47,10 +48,29 @@ class BlogController extends AbstractController
     }
 
     /**
+     * @Route("/blog_admin", name="blog_index_admin", methods="GET")
+     */
+    public function index_admin(
+        BlogRepository $blogRepository,
+        Request $request,
+        PaginatorInterface $paginator,
+        AuthorizationCheckerInterface $authChecker): Response
+    {
+
+        if(!$authChecker->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute('blog_index');
+        }
+        return $this->render('blog/blog_admin.html.twig', ['blogs' => $blogRepository->findAll()]);
+    }
+
+    /**
      * @Route("/new", name="blog_new", methods="GET|POST")
      */
-    public function new(Request $request): Response
+    public function new(Request $request, AuthorizationCheckerInterface $authChecker): Response
     {
+        if(!$authChecker->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute('blog_index');
+        }
         $blog = new Blog();
         $form = $this->createForm(BlogType::class, $blog);
         $form->handleRequest($request);
@@ -118,8 +138,11 @@ class BlogController extends AbstractController
     /**
      * @Route("/{id}/edit", name="blog_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Blog $blog): Response
+    public function edit(Request $request, Blog $blog, AuthorizationCheckerInterface $authChecker): Response
     {
+        if(!$authChecker->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute('blog_index');
+        }
         $form = $this->createForm(BlogType::class, $blog);
         $form->handleRequest($request);
 

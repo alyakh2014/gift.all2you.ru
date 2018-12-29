@@ -26,105 +26,9 @@
     {% block headscripts %}{% endblock %}
 </head>
 <body>
-<nav id="colorlib-main-nav" role="navigation">
-    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle active"><i></i></a>
-    <div class="js-fullheight colorlib-table">
-        <div class="colorlib-table-cell js-fullheight">
-            <div class="row d-flex justify-content-end">
-                <div class="col-md-12 px-5">
-                    <ul class="mb-5">
-                        <li class="active"><a href="{{ path('blog_index') }}"><span>{{ 'Home' | trans }}</span></a></li>
-                        <li><a href="{{ path('about_blog') }}"><span>{{ 'Blog' | trans }}</span></a></li>
-                        <li><a href="{{ path('about_partners') }}"><span>{{ 'Partners' | trans }}</span></a></li>
-                        <li><a href="{{ path('about_index') }}"><span>{{ 'About us' | trans }}</span></a></li>
-                        <li><a href="{{ path('about_contacts') }}"><span>{{ 'Contact' | trans }}</span></a></li>
-                    </ul>
-                </div>
-                <div class="col px-5 copyright">
-                    <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> {{ 'All rights reserved' | trans }} <br> {{ 'This site is made with ' | trans }} <i class="icon-heart" aria-hidden="true"></i> {{ ' for you' | trans }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
+{% block mainbody %}
 
-<div id="colorlib-page">
-    <header>
-        <div class="container-fluid">
-            <div class="row no-gutters">
-                <div class="col-md-12">
-                    <div class="colorlib-navbar-brand">
-                        <a class="colorlib-logo" href="{{ path('blog_index') }}">best-gift.ru</a>
-                    </div>
-                    <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-                </div>
-            </div>
-        </div>
-        <div id="user_link">
-            {% if app.user %}
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="user">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <span class="caret"></span>
-                        <span class="">{{ app.user.username }}</span>
-                    </a>
-                    <ul class="dropdown-menu user" role="menu" aria-labelledby="user">
-                        <li>
-                            <a href="{{ path('user_edit') }}">
-                                <i class="fa fa-edit" aria-hidden="true"></i> {{ 'menu.user'|trans }}
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="{{ path('security_logout') }}">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i> {{ 'menu.logout'|trans }}
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            {% endif %}
-        </div>
-    </header>
-
-    <section class="ftco-fixed clearfix">
-        <div class="image js-fullheight float-left">
-            <div class="home-slider owl-carousel js-fullheight">
-                {% for i in 1..3 %}
-                <div class="slider-item js-fullheight" style="background-image: url('{{ asset("images/bg_" ~ i ~ ".jpg")  }}')">
-                    <div class="overlay"></div>
-                    <div class="container">
-                        <div class="row slider-text align-items-end" data-scrollax-parent="true">
-                            <div class="col-md-10 col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                                <p class="cat"><span>У. Уолкот</span></p>
-                                <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Каждый подарок, даже самый маленький, становится великим даром, если ты вручаешь его с любовью.</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <div class="home-slider-img-mobile">
-                <img src="{{ asset('images/bg_3.jpg') }}" alt="gift2you.ru">
-            </div>
-        </div>
-        <div class="page-container float-right">
-            <div class="row">
-                {% block body %}{% endblock %}
-            </div>
-            <div class="row" id="blog_main_nav">
-            {% block pagination %}{% endblock %}
-            </div>
-        </div>
-
-    <!-- end: page-container-->
-    </section>
-
-    <!-- loader -->
-    <div id="ftco-loader" class="show fullscreen">
-        <svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
-    </div>
-
-</div>
+{% endblock %}
 {% block javascripts %}
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -142,7 +46,7 @@
     <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
     <script src="{{ asset('js/jquery.timepicker.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <!--script src="{{ asset('js/google-map.js') }}"></script-->
+    <!--script src="{#{ asset('js/google-map.js') }#}"></script-->
 {% endblock %}
 <!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script-->
 </body>

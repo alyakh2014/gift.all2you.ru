@@ -65,7 +65,6 @@ class FeedbackController extends AbstractController
                 ->setTo($form->get("email")->getData())
                 ->setSubject($form->get("subject")->getData())
                 ->setBody($this->renderView(
-                // templates/emails/registration.html.twig
                     'emails/feedback.html.twig',
                     array('name' => $form->get("name")->getData(), 'message'=>$form->get("message")->getData())
                 ),

@@ -12,7 +12,7 @@
             </trans-unit>
             <trans-unit id="back to list">
                 <source>back to list</source>
-                <target>Вернуться в блог</target>
+                <target>Вернуться</target>
             </trans-unit>
             <trans-unit id="show">
                 <source>show</source>
@@ -262,6 +262,22 @@
                 <source>Recover password</source>
                 <target>Выслать пароль на почту</target>
             </trans-unit>
-         </body>
+            <trans-unit id="Recovery Password">
+                <source>Recovery Password</source>
+                <target>Восстановить пароль</target>
+            </trans-unit>
+            <trans-unit id="Set New Pass">
+                <source>Set New Pass</source>
+                <target>Установить новый пароль</target>
+            </trans-unit>
+             <trans-unit id="Edit Partners">
+                <source>Edit Partners</source>
+                <target>Изменить информацию о партнёре</target>
+            </trans-unit>
+            <trans-unit id="Edit Partner">
+                <source>Edit Partner</source>
+                <target>Партнёр</target>
+            </trans-unit>
+        </body>
     </file>
 </xliff>

@@ -8812,7 +8812,7 @@ textarea.form-control {
 }
 
 #RegisterLink{
-    padding-left:15px;
+    /*padding-left:15px;*/
 }
 
 #RegisterLinkCover{
@@ -8889,4 +8889,9 @@ a.js-colorlib-nav-toggle.colorlib-nav-toggle{
 
 #main_menu_oneside .oneside_navigation_ul li{
   margin-right: 15px;
+}
+
+.blog-admin .blog-admin__img{
+  width:200px;
+  height:auto;
 }
