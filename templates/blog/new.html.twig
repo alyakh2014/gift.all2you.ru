@@ -1,9 +1,9 @@
 {% extends 'base_oneside.html.twig' %}
 
-{% block title %}New Blog{% endblock %}
+{% block title %}{{ 'Create new Blog' | trans }}{% endblock %}
 
-{% block mainbody %}
-    <h1>Create new Blog</h1>
+{% block body %}
+    <h1>{{ 'Create new Blog' | trans }}</h1>
 
     {{ include('blog/_form.html.twig') }}
 

@@ -1,21 +1,21 @@
 {% extends 'base_oneside.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}{{ 'User index' | trans }}{% endblock %}
 
-{% block mainbody %}
-    <h1>User index</h1>
+{% block body %}
+    <h1>{{ 'User index' | trans }}</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Username</th>
-                <th>UserEmail</th>
-                <th>UserPassword</th>
-                <th>IsActive</th>
-                <th>IsAdmin</th>
-                <th>Age of user</th>
-                <th>Gender of user</th>
+                <th>{{ 'Username' | trans }}</th>
+                <th>{{ 'Email' | trans }}</th>
+                {#<th>{{ 'UserPassword' | trans }}</th>#}
+                <th>{{ 'IsActive' | trans }}</th>
+                <th>{{ 'IsAdmin' | trans }}</th>
+                <th>{{ 'Age of user' | trans }}</th>
+                <th>{{ 'Gender of user' | trans }}</th>
                 <th></th>
             </tr>
         </thead>
@@ -25,14 +25,14 @@
                 <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>
+                {#<td>{{ user.password }}</td>#}
                 <td>{{ user.isActive ? 'Yes' : 'No' }}</td>
                 <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
                 <td>{{ user.userage }}</td>
                 <td>{{ user.gender }}</td>
                 <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">showUser</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">editUser</a>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">{{ 'show' | trans }}</a><br>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">{{ 'edit' | trans }}</a>
                 </td>
             </tr>
         {% else %}
@@ -43,5 +43,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('user_new') }}">Create new</a>
+    <a href="{{ path('user_new') }}">{{ 'Create new user' | trans }}</a>
 {% endblock %}

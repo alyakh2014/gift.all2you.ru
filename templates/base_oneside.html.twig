@@ -7,7 +7,23 @@
     {% endblock %}
     {% block headscripts %}{% endblock %}
 
-    {% block mainbody %}{% endblock %}
+    {% block mainbody %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-4 col-lg-3">
+                    <ul class="template-oneside__leftmenu">
+                        <li><a href="{{ path('blog_index_admin') }}">{{ "List of articles" | trans }}</a></li>
+                        <li><a href="{{ path('user_index') }}">{{ "List of users" | trans }}</a></li>
+                        <li><a href="{{ path('partners_index') }}">{{ "List of partners" | trans }}</a></li>
+                        <li><a href="{#{ path('user_index') }#}">{{ "List of comments" | trans }}</a></li>
+                        <li><a href="{#{ path('blog_index_admin') }#}">{{ "List of feedbacks" | trans }}</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-12 col-md-8 col-lg-9">
+                    {% block body %}{% endblock %}
+                </div>
+        </div>
+    {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}

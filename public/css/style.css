@@ -8826,9 +8826,18 @@ textarea.form-control {
 
 /*Partners page*/
 .partners_picture{
-  width:100%;
+  width:50%;
 }
 
+.partners-list__table-head, .partners-list__table-body{
+  text-align: center;
+}
+
+/* Blog list page for admin */
+
+.blog-admin__refs{
+  text-align: right;
+}
 
 /*Blog detail page*/
 
@@ -8894,4 +8903,9 @@ a.js-colorlib-nav-toggle.colorlib-nav-toggle{
 .blog-admin .blog-admin__img{
   width:200px;
   height:auto;
+}
+
+.template-oneside__leftmenu{
+  list-style: none;
+  margin-top:60px;
 }

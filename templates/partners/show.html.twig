@@ -2,7 +2,7 @@
 
 {% block title %}Partners{% endblock %}
 
-{% block mainbody %}
+{% block body %}
     <h1>{{ 'Partner' | trans }}: {{ partner.name }}</h1>
 
     <table class="table">
@@ -30,7 +30,7 @@
         </tbody>
     </table>
     <div class="full_width">
-        <a href="{{ path('partners_edit', {'id': partner.id}) }}">{{ 'edit_partner' | trans }}</a>
+        <a href="{{ path('partners_edit', {'id': partner.id}) }}">{{ 'edit' | trans }}</a>
     </div>
     <div class="full_width">
         <a href="{{ path('partners_index') }}">{{ 'back to partnerslist' | trans }}</a>

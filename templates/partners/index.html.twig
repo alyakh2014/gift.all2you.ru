@@ -2,30 +2,30 @@
 
 {% block title %}{{ 'Partners index' | trans }}{% endblock %}
 
-{% block mainbody %}
+{% block body %}
     <h1>{{ 'Partners index' | trans }}</h1>
-    <table class="table" id="partners_list">
+    <table class="table partners-list" id="partners_list">
         <thead>
-            <tr>
+            <tr class="partners-list__table-head">
                 <th>{{ 'Id' | trans }}</th>
                 <th>{{ 'Partner' | trans }}</th>
                 <th>{{ 'Partner logo' | trans }}</th>
                 <th>{{ 'Href' | trans }}</th>
                 <th>{{ 'Description' | trans }}</th>
-                <th>{{ 'actions' | trans }}</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for partner in partners %}
-            <tr>
+            <tr class="partners-list__table-body">
                 <td>{{ partner.id }}</td>
                 <td>{{ partner.name }}</td>
-                <td><img class="partners_picture" src="{{ asset("images/partners/" ~ partner.picture  ) }}"/></td>
+                <td class="partners-list__logo"><img class="partners_picture" src="{{ asset("images/partners/" ~ partner.picture  ) }}"/></td>
                 <td>{{ partner.href }}</td>
                 <td>{{ partner.description }}</td>
                 <td>
-                    <a href="{{ path('partners_show', {'id': partner.id}) }}">{{ 'show_partner' | trans }}</a>
-                    <a href="{{ path('partners_edit', {'id': partner.id}) }}">{{ 'edit_partner' | trans }}</a>
+                    <a href="{{ path('partners_show', {'id': partner.id}) }}">{{ 'show' | trans }}</a>
+                    <a href="{{ path('partners_edit', {'id': partner.id}) }}">{{ 'edit' | trans }}</a>
                 </td>
             </tr>
         {% else %}

@@ -236,15 +236,15 @@
             </trans-unit>
             <trans-unit id="IsAdmin">
                 <source>IsAdmin</source>
-                <target>Права админа</target>
+                <target>Админ</target>
             </trans-unit>
             <trans-unit id="Age of user">
                 <source>Age of user</source>
-                <target>Возраст пользователя</target>
+                <target>Возраст</target>
             </trans-unit>
             <trans-unit id="Gender of user">
-                <source>Gender  of user</source>
-                <target>Пол пользователя</target>
+                <source>Gender of user</source>
+                <target>Пол</target>
             </trans-unit>
             <trans-unit id="showUser">
                 <source>showUser</source>
@@ -277,6 +277,70 @@
             <trans-unit id="Edit Partner">
                 <source>Edit Partner</source>
                 <target>Партнёр</target>
+            </trans-unit>
+            <trans-unit id="Create new Blog">
+                <source>Create new Blog</source>
+                <target>Добавить новую стать в блог</target>
+            </trans-unit>
+            <trans-unit id="Create new user">
+                <source>Create new user</source>
+                <target>Добавить пользователя</target>
+            </trans-unit>
+            <trans-unit id="List of articles">
+                <source>List of articles</source>
+                <target>Статьи</target>
+            </trans-unit>
+            <trans-unit id="List of users">
+                <source>List of users</source>
+                <target>Пользователи</target>
+            </trans-unit>
+            <trans-unit id="List of partners">
+                <source>List of partners</source>
+                <target>Партнёры</target>
+            </trans-unit>
+            <trans-unit id="Partner">
+                <source>Partner</source>
+                <target>Партнёр</target>
+            </trans-unit>
+            <trans-unit id="Partner logo">
+                <source>Partner logo</source>
+                <target>Логотип</target>
+            </trans-unit>
+            <trans-unit id="Href">
+                <source>Href</source>
+                <target>Ссылка</target>
+            </trans-unit>
+            <trans-unit id="Description">
+                <source>Description</source>
+                <target>Описание</target>
+            </trans-unit>
+            <trans-unit id="List of comments">
+                <source>List of comments</source>
+                <target>Комментарии к сатьям</target>
+            </trans-unit>
+            <trans-unit id="List of feedbacks">
+                <source>List of feedbacks</source>
+                <target>Заявки по обратной связи</target>
+            </trans-unit>
+            <trans-unit id="Blogs all">
+                <source>Blogs all</source>
+                <target>Опубликованные статьи</target>
+            </trans-unit>
+            <trans-unit id="Name">
+                <source>Name</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="Picture">
+                <source>Picture</source>
+                <target>Изображение</target>
+            </trans-unit>
+            <trans-unit id="Create new partner">
+                <source>Create new partner</source>
+                <target>Добавить нового партнёра</target>
+            </trans-unit>
+            <trans-unit id="back to partnerslist">
+                <source>back to partnerslist</source>
+                <target>Вернуться к списку партнёров</target>
             </trans-unit>
         </body>
     </file>
