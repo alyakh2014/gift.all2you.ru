@@ -22,6 +22,11 @@ class Blogresponse
     private $blog_id;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isActive;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $email;
@@ -55,6 +60,18 @@ class Blogresponse
     public function setBlogId(int $blog_id): self
     {
         $this->blog_id = $blog_id;
+
+        return $this;
+    }
+
+    public function getIsActive(): ?bool
+    {
+        return $this->isActive;
+    }
+
+    public function setIsActive(bool $isActive): self
+    {
+        $this->isActive = $isActive;
 
         return $this;
     }

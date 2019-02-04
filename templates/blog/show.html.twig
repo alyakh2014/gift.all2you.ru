@@ -32,6 +32,11 @@
                 {{ form_help(form.blog_id) }}
             </div>
             <div class="form-group">
+                {{ form_errors(form.isActive) }}
+                {{ form_widget(form.isActive, {'attr':{'class':'form-control', 'value': 0}}) }}
+                {{ form_help(form.isActive) }}
+            </div>
+            <div class="form-group">
                 {{ form_label(form.text) }}
                 {{ form_errors(form.text) }}
                 {{ form_widget(form.text, {'attr':{'class':'form-control', 'rows': 8}}) }}

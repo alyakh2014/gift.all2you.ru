@@ -12,6 +12,7 @@
                 <th>{{ 'Text' | trans }}</th>
                 <th>{{ 'Date' | trans }}</th>
                 <th>{{ 'User response' | trans }}</th>
+                <th>{{ 'IsActive' | trans }}</th>
                 <th>{#{{ 'actions' | trans }}#}</th>
             </tr>
         </thead>
@@ -22,9 +23,14 @@
                 <td>{{ blogresponse.message }}</td>
                 <td>{{ blogresponse.date ? blogresponse.date|date('Y-m-d H:i:s') : '' }}</td>
                 <td><a href="{{ path('user_show', {'id': blogresponse.userId}) }}">{{ blogresponse.user }}</a></td>
+                <td>{{ blogresponse.active }}</td>
                 <td>
-                    <a href="{{ path('blogresponse_show', {'id': blogresponse.blogId}) }}">{{ 'show' | trans }}</a>
-                    <a href="{{ path('blogresponse_edit', {'id': blogresponse.blogId}) }}">{{ 'edit' | trans }}</a>
+                    <a href="{{ path('blogresponse_show', {'id': blogresponse.id}) }}">{{ 'show' | trans }}</a><br>
+                    {% if not blogresponse.active %}
+                        <a href="{{ path('blogresponse_activate', {'id': blogresponse.id}) }}">{{ 'activate' | trans }}</a>
+                    {% else %}
+                        <a href="{{ path('blogresponse_deactivate', {'id': blogresponse.id}) }}">{{ 'deactivate' | trans }}</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}

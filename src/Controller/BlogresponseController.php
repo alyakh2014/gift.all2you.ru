@@ -20,6 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 /**
  * @Route("/blogresponse")
  */
@@ -32,6 +33,8 @@ class BlogresponseController extends AbstractController
     {
         $blogresponses = [];
         foreach($blogresponseRepository->findAll() as $key=>$value){
+            $blogresponses[$key]['id'] = $value->getId();
+            $blogresponses[$key]['active'] = $value->getIsActive();
             //Получаем название статьи к которой добавлен отзыв
             $blogresponses[$key]['blogId'] = $value->getBlogId();
             $blogresponses[$key]['blogTitle'] = $this->getDoctrine()
@@ -61,6 +64,7 @@ class BlogresponseController extends AbstractController
             ->add('text', TextareaType::class)
             ->add('user', HiddenType::class)
             ->add('email', HiddenType::class)
+            ->add('isActive', HiddenType::class)
             ->add('save', SubmitType::class, array('label'=>'Leave response'))
             ->getForm();
 
@@ -87,16 +91,39 @@ class BlogresponseController extends AbstractController
     /**
      * @Route("/{id}", name="blogresponse_show", methods="GET")
      */
-    public function show(Blogresponse $blogresponse, UserRepository $user, BlogRepository $blog): Response
+    public function show(BlogresponseRepository $blogresponseRepository, Request $request): Response
     {
-        return $this->render('blogresponse/show.html.twig', ['blogresponse' => $blogresponse]);
+        $response = $blogresponseRepository->findOneBy(['id'=>$request->get('id')]);
+        $res = [];
+        $res['id'] = $response->getId();
+        $blogItem = $this->getDoctrine()
+                    ->getRepository(Blog::class)
+                    ->findOneBy(['id'=>$response->getBlogId()]);
+        $res['blogId'] = $blogItem->getId();
+        $res['blogName'] = $blogItem->getTitle();
+
+        $res['email'] = $response->getEmail();
+        $res['text'] = $response->getText();
+        $user = $this->getDoctrine()
+                ->getRepository(User::class)
+                ->findOneBy(["id" => $response->getUser()]);
+        $res['userId'] = $user->getId();
+        $res['userName'] = $user->getUsername();
+        $res['time'] = $response->getDate();
+
+       return $this->render('blogresponse/show.html.twig', ['blogresponse' => $res]);
     }
 
     /**
      * @Route("/{id}/edit", name="blogresponse_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Blogresponse $blogresponse): Response
+    public function edit(
+        Request $request,
+        Blogresponse $blogresponse,
+        AuthorizationCheckerInterface $authChecker): Response
     {
+
+        return $this->redirectToRoute("blog_index");
         $form = $this->createForm(BlogresponseType::class, $blogresponse);
         $form->handleRequest($request);
 
@@ -123,6 +150,45 @@ class BlogresponseController extends AbstractController
             $em->flush();
         }
 
+        return $this->redirectToRoute('blogresponse_index');
+    }
+
+    /**
+     * @Route("/activate/{id}", name="blogresponse_activate", methods="GET|POST")
+     */
+    public function activate(Request $request, Blogresponse $blogresponse): Response
+    {
+        $id = $request->get("id");
+        $em = $this->getDoctrine()->getManager();
+        $blogresp = $em->getRepository(Blogresponse::class)->find($id);
+
+        if (!$blogresp) {
+            throw $this->createNotFoundException(
+                'No response found for id '.$id
+            );
+        }
+
+        $blogresp->setIsActive(1);
+        $em->flush();
+        return $this->redirectToRoute('blogresponse_index');
+    }
+    /**
+     * @Route("/deactivate/{id}", name="blogresponse_deactivate", methods="GET|POST")
+     */
+    public function deactivate(Request $request, Blogresponse $blogresponse): Response
+    {
+        $id = $request->get("id");
+        $em = $this->getDoctrine()->getManager();
+        $blogresp = $em->getRepository(Blogresponse::class)->find($id);
+
+        if (!$blogresp) {
+            throw $this->createNotFoundException(
+                'No response found for id '.$id
+            );
+        }
+
+        $blogresp->setIsActive(0);
+        $em->flush();
         return $this->redirectToRoute('blogresponse_index');
     }
 }

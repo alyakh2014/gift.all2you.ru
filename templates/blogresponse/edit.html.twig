@@ -1,9 +1,9 @@
-{% extends 'baseadd.html.twig' %}
+{% extends 'base_oneside.html.twig' %}
 
-{% block title %}Edit Blogresponse{% endblock %}
+{% block title %}{{ 'Edit Blogresponse' | trans }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Blogresponse</h1>
+    <h1>Edit {{ 'Edit Blogresponse' | trans }}</h1>
 
     {{ include('blogresponse/_form.html.twig', {'button_label': 'Update'}) }}
 

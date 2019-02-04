@@ -1,9 +1,9 @@
-{% extends 'baseadd.html.twig' %}
+{% extends 'base_oneside.html.twig' %}
 
-{% block title %}Blogresponse{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body %}
-    <h1>Blogresponse</h1>
+    <h1>{{ 'Blogresponse' | trans }}</h1>
 
     <table class="table">
         <tbody>
@@ -12,27 +12,27 @@
                 <td>{{ blogresponse.id }}</td>
             </tr>
             <tr>
-                <th>Blog_id</th>
-                <td>{{ blogresponse.blogId }}</td>
+                <th>{{ 'blogName' | trans }}</th>
+                <td><a href="{{ path('blog_show', {'id':blogresponse.blogId}) }}">{{ blogresponse.blogName }}</a></td>
             </tr>
             <tr>
-                <th>Text</th>
+                <th>{{ 'blogText' | trans }}</th>
                 <td>{{ blogresponse.text }}</td>
             </tr>
             <tr>
                 <th>Date</th>
-                <td>{{ blogresponse.date ? blogresponse.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ blogresponse.time ? blogresponse.time|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
                 <th>Username</th>
-                <td>{{ blogresponse.user_id }}</td>
+                <td><a href="{{ path('user_show', {'id':blogresponse.userId}) }}">{{ blogresponse.userName }}</a></td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('blogresponse_index') }}">back to list</a>
+    <a class="btn btn-primary floatBtn" href="{{ path('blogresponse_index') }}">{{ 'back to list' | trans}}</a>
 
-    <a href="{{ path('blogresponse_edit', {'id': blogresponse.id}) }}">edit</a>
+{#    <a class="btn btn-primary floatBtn" href="{{ path('blogresponse_edit', {'id': blogresponse.id}) }}">{{ 'edit' | trans}}</a>#}
 
     {{ include('blogresponse/_delete_form.html.twig') }}
 {% endblock %}

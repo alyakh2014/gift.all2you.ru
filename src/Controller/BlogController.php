@@ -101,7 +101,7 @@ class BlogController extends AbstractController
         //Получаем все отзывы по данному блогу
         $otzivy = $this->getDoctrine()
                     ->getRepository(Blogresponse::class)
-                    ->findBy(["blog_id" => $blog]);
+                    ->findBy(["blog_id" => $blog, "isActive"=>1]);
 
         $arrOtzivy = [];
         foreach($otzivy as $key=>$item){
@@ -129,6 +129,7 @@ class BlogController extends AbstractController
                 ->add('text', TextareaType::class)
                 ->add('user', HiddenType::class)
                 ->add('email', HiddenType::class)
+                ->add('isActive', HiddenType::class)
                 ->add('save', SubmitType::class, array('label'=>'Оставить отзыв'))
                 ->getForm();
 

@@ -402,6 +402,30 @@
                 <source>User response</source>
                 <target>Пользователь оставивший отзыв</target>
             </trans-unit>
+            <trans-unit id="Blogresponse">
+                <source>Blogresponse</source>
+                <target>Отзыв к статье блога</target>
+            </trans-unit>
+            <trans-unit id="blogName">
+                <source>blogName</source>
+                <target>Название статьи блога</target>
+            </trans-unit>
+            <trans-unit id="blogText">
+                <source>blogText</source>
+                <target>Текст статьи блога</target>
+            </trans-unit>
+            <trans-unit id="Edit Blogresponse">
+                <source>Edit Blogresponse</source>
+                <target>Активировать отзыв</target>
+            </trans-unit>
+            <trans-unit id="activate">
+                <source>activate</source>
+                <target>Активировать отзыв</target>
+            </trans-unit>
+            <trans-unit id="deactivate">
+                <source>deactivate</source>
+                <target>Деактивировать отзыв</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
