@@ -1,11 +1,61 @@
 {% extends 'base_oneside.html.twig' %}
 
-{% block title %}New User{% endblock %}
+{% block title %}{{ 'Create new User' | trans }}{% endblock %}
 
-{% block mainbody %}
-    <h1>Create new User</h1>
+{% block body %}
+    <h1>{{ 'Create new User' | trans }}</h1>
 
-    {{ include('user/_form.html.twig') }}
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            {{ message }}
+        </div>
+    {% endfor %}
 
-    <a href="{{ path('user_index') }}">back to list</a>
+    <div class="col-sm-12">
+        {{ form_start(form, {'attr' : {'id' : 'create_user_form'}}) }}
+        {{ form_errors(form) }}
+
+        <div class="form-group">
+            {{ form_label(form.username) }}
+            {{ form_errors(form.username) }}
+            {{ form_widget(form.username, {'attr':{'class':'form-control'}}) }}
+            {{ form_help(form.username) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.email) }}
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email, {'attr':{'class':'form-control'}}) }}
+            {{ form_help(form.email) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.userage) }}
+            {{ form_errors(form.userage) }}
+            {{ form_widget(form.userage, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.userage) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.gender) }}
+            {{ form_errors(form.gender) }}
+            {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.gender) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.plainPassword.first) }}
+            {{ form_errors(form.plainPassword.first) }}
+            {{ form_widget(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.plainPassword.first) }}
+        </div>
+
+        <div class="form-group">
+            {{ form_label(form.plainPassword.second) }}
+            {{ form_errors(form.plainPassword.second) }}
+            {{ form_widget(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+            {{ form_help(form.plainPassword.second) }}
+        </div>
+        <button type="submit" class="btn btn-primary floatBtn">{{ 'Create new user' | trans }}</button>
+        {{ form_end(form) }}
+    </div>
+
+    <a class="btn btn-primary" href="{{ path('user_index') }}">{{ 'back to admin list' | trans }}</a>
 {% endblock %}

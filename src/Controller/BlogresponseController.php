@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Blog;
 use App\Entity\Blogresponse;
+use App\Entity\User;
 use App\Form\BlogresponseType;
+use App\Repository\BlogRepository;
 use App\Repository\BlogresponseRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,7 +30,23 @@ class BlogresponseController extends AbstractController
      */
     public function index(BlogresponseRepository $blogresponseRepository): Response
     {
-        return $this->render('blogresponse/index.html.twig', ['blogresponses' => $blogresponseRepository->findAll()]);
+        $blogresponses = [];
+        foreach($blogresponseRepository->findAll() as $key=>$value){
+            //Получаем название статьи к которой добавлен отзыв
+            $blogresponses[$key]['blogId'] = $value->getBlogId();
+            $blogresponses[$key]['blogTitle'] = $this->getDoctrine()
+                                            ->getRepository(Blog::class)
+                                            ->findOneBy(["id" => $value->getBlogId()])->getTitle();
+            $blogresponses[$key]['message'] = $value->getText();
+            $blogresponses[$key]['date'] = $value->getDate();
+            //Получаем имя пользователя отзыва
+            $blogresponses[$key]['userId'] = $value->getUser();
+            $blogresponses[$key]['user']  = $this->getDoctrine()
+                        ->getRepository(User::class)
+                        ->findOneBy(["id" => $value->getUser()])
+                        ->getUsername();
+        }
+        return $this->render('blogresponse/index.html.twig', ['blogresponses' => $blogresponses /*$blogresponseRepository->findAll()*/]);
     }
 
     /**
@@ -67,7 +87,7 @@ class BlogresponseController extends AbstractController
     /**
      * @Route("/{id}", name="blogresponse_show", methods="GET")
      */
-    public function show(Blogresponse $blogresponse): Response
+    public function show(Blogresponse $blogresponse, UserRepository $user, BlogRepository $blog): Response
     {
         return $this->render('blogresponse/show.html.twig', ['blogresponse' => $blogresponse]);
     }

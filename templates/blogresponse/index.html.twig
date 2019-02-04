@@ -1,41 +1,39 @@
-{% extends 'baseadd.html.twig' %}
+{% extends 'base_oneside.html.twig' %}
 
-{% block title %}Blogresponse index{% endblock %}
+{% block title %}{{ 'Blogresponse index' | trans }}{% endblock %}
 
 {% block body %}
-    <h1>Blogresponse index</h1>
+    <h1>{{ 'Blogresponse index' | trans }}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Blog_id</th>
-                <th>Text</th>
-                <th>Date</th>
-                <th>Username</th>
-                <th>actions</th>
+                <th>{{ 'blogId' | trans }}</th>
+                <th>{{ 'Text' | trans }}</th>
+                <th>{{ 'Date' | trans }}</th>
+                <th>{{ 'User response' | trans }}</th>
+                <th>{#{{ 'actions' | trans }}#}</th>
             </tr>
         </thead>
         <tbody>
         {% for blogresponse in blogresponses %}
             <tr>
-                <td>{{ blogresponse.id }}</td>
-                <td>{{ blogresponse.blogId }}</td>
-                <td>{{ blogresponse.text }}</td>
+                <td><a href="{{ path('blog_show', {'id': blogresponse.blogId}) }}">{{ blogresponse.blogTitle }}</a></td>
+                <td>{{ blogresponse.message }}</td>
                 <td>{{ blogresponse.date ? blogresponse.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ blogresponse.user_id }}</td>
+                <td><a href="{{ path('user_show', {'id': blogresponse.userId}) }}">{{ blogresponse.user }}</a></td>
                 <td>
-                    <a href="{{ path('blogresponse_show', {'id': blogresponse.id}) }}">show</a>
-                    <a href="{{ path('blogresponse_edit', {'id': blogresponse.id}) }}">edit</a>
+                    <a href="{{ path('blogresponse_show', {'id': blogresponse.blogId}) }}">{{ 'show' | trans }}</a>
+                    <a href="{{ path('blogresponse_edit', {'id': blogresponse.blogId}) }}">{{ 'edit' | trans }}</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">{{ 'no records found' | trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('blogresponse_new') }}">Create new</a>
+   {# <a href="{{ path('blogresponse_new') }}">{{ 'Create new' | trans }}</a>#}
 {% endblock %}

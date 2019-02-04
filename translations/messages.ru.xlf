@@ -126,9 +126,17 @@
                 <source>menu.logout</source>
                 <target>Выйти</target>
             </trans-unit>
+            <trans-unit id="menu.signin">
+                <source>menu.signin</source>
+                <target>Авторизоваться</target>
+            </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>
                 <target>Личный кабинет</target>
+            </trans-unit>
+            <trans-unit id="menu.admin">
+                <source>menu.admin</source>
+                <target>Панель администратора</target>
             </trans-unit>
             <trans-unit id="action.sign_in">
                 <source>action.sign_in</source>
@@ -341,6 +349,58 @@
             <trans-unit id="back to partnerslist">
                 <source>back to partnerslist</source>
                 <target>Вернуться к списку партнёров</target>
+            </trans-unit>
+            <trans-unit id="Return to main">
+                <source>Return to main</source>
+                <target>Вернуться на главную</target>
+            </trans-unit>
+            <trans-unit id="Blogresponse index">
+                <source>Blogresponse index</source>
+                <target>Отзывы пользователей</target>
+            </trans-unit>
+            <trans-unit id="Update blog">
+                <source>Update blog</source>
+                <target>Обновить статью</target>
+            </trans-unit>
+            <trans-unit id="Edit Blog">
+                <source>Edit Blog</source>
+                <target>Редактировать статью</target>
+            </trans-unit>
+            <trans-unit id="Title">
+                <source>Title</source>
+                <target>Название</target>
+            </trans-unit>
+            <trans-unit id="Image">
+                <source>Image</source>
+                <target>Изображение</target>
+            </trans-unit>
+            <trans-unit id="Link1">
+                <source>Link1</source>
+                <target>Ссылка 1</target>
+            </trans-unit>
+            <trans-unit id="Link2">
+                <source>Link2</source>
+                <target>Ссылка 2</target>
+            </trans-unit>
+            <trans-unit id="Date create">
+                <source>Date create</source>
+                <target>Дата создания</target>
+            </trans-unit>
+            <trans-unit id="back to admin list">
+                <source>back to admin list</source>
+                <target>Вернуться в админ панель</target>
+            </trans-unit>
+            <trans-unit id="Create new User">
+                <source>Create new User</source>
+                <target>Завести новую учётную запись</target>
+            </trans-unit>
+            <trans-unit id="blogId">
+                <source>blogId</source>
+                <target>Статья блога</target>
+            </trans-unit>
+            <trans-unit id="User response">
+                <source>User response</source>
+                <target>Пользователь оставивший отзыв</target>
             </trans-unit>
         </body>
     </file>

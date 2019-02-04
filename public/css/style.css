@@ -8909,3 +8909,8 @@ a.js-colorlib-nav-toggle.colorlib-nav-toggle{
   list-style: none;
   margin-top:60px;
 }
+
+.floatBtn{
+  display:inline-flex;
+  float:left;
+}

@@ -136,9 +136,18 @@ class UserController extends AbstractController
     /**
      * @Route("/edit", name="user_edit", methods="GET|POST")
      */
-    public function edit(Request $request): Response
+    public function edit(Request $request, AuthorizationCheckerInterface $authChecker): Response
     {
-      $user = $this->getUser();
+
+      if($request->get('id') && $authChecker->isGranted('ROLE_ADMIN')){
+          $id = $request->get('id');
+         $user = $this->getDoctrine()
+              ->getRepository(User::class)
+              ->findOneBy(["id" => $id]);
+      }else{
+          $user = $this->getUser();
+      }
+
 
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -149,7 +158,7 @@ class UserController extends AbstractController
                 'notice',
                 'Профиль успешно отредактирован!'
             );
-            return $this->redirectToRoute('user_edit');
+            return $this->redirectToRoute('user_edit', ['id' => $id]);
         }
 
         return $this->render('user/edit.html.twig', [
@@ -202,7 +211,7 @@ class UserController extends AbstractController
      */
     public function show(User $user): Response
     {
-        return $this->render('user/show.html.twig', ['user' => $user]);
+        return $this->redirectToRoute('user_index');//$this->render('user/show.html.twig', ['user' => $user]);
     }
 
     /**

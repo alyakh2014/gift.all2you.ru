@@ -16,6 +16,9 @@
             <a href="{{ blog.link2 }}" target="_blank">{{ blog.link2 }}</a><br/>
         </div>
         <a href="{{ path('blog_index') }}">{{ "back to list" | trans }}</a><br>
+        {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('blog_index_admin') }}">{{ "back to admin list" | trans }}</a><br>
+        {% endif %}
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
             {# Your new comment #}
