@@ -1,33 +1,33 @@
-{% extends 'baseadd.html.twig' %}
+{% extends 'base_oneside.html.twig' %}
 
-{% block title %}Feedback index{% endblock %}
+{% block title %}{{ 'Feedback index' | trans }}{% endblock %}
 
 {% block body %}
-    <h1>Feedback index</h1>
+    <h1>{{ 'Feedback index' | trans }}</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Subject</th>
-                <th>Message</th>
-                <th>actions</th>
+                {#<th>Id</th>#}
+                <th>{{ 'Name' | trans }}</th>
+                <th>{{ 'Email' | trans }}</th>
+                <th>{{ 'Subject' | trans }}</th>
+                <th>{{ 'Message' | trans }}</th>
+                {#<th></th>#}
             </tr>
         </thead>
         <tbody>
         {% for feedback in feedback %}
             <tr>
-                <td>{{ feedback.id }}</td>
+               {# <td>{{ feedback.id }}</td>#}
                 <td>{{ feedback.name }}</td>
                 <td>{{ feedback.email }}</td>
                 <td>{{ feedback.subject }}</td>
                 <td>{{ feedback.message }}</td>
-                <td>
-                    <a href="{{ path('feedback_show', {'id': feedback.id}) }}">show</a>
-                    <a href="{{ path('feedback_edit', {'id': feedback.id}) }}">edit</a>
-                </td>
+{#                <td>
+                    <a href="{{ path('feedback_show', {'id': feedback.id}) }}">{{ 'show'  | trans }}</a><br>
+                    <a href="{{ path('feedback_edit', {'id': feedback.id}) }}">{{ 'edit'  | trans }}</a>
+                </td>#}
             </tr>
         {% else %}
             <tr>
@@ -37,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('feedback_new') }}">Create new</a>
+    {#<a href="{{ path('feedback_new') }}">Create new</a>#}
 {% endblock %}

@@ -426,6 +426,26 @@
                 <source>deactivate</source>
                 <target>Деактивировать отзыв</target>
             </trans-unit>
+            <trans-unit id="Feedback index">
+                <source>Feedback index</source>
+                <target>Обратная связь от пользователей</target>
+            </trans-unit>
+            <trans-unit id="An Error Occurred">
+                <source>An Error Occurred</source>
+                <target>Упс! Что-то пошло не так</target>
+            </trans-unit>
+            <trans-unit id="Page not found or other error!">
+                <source>Page not found or other error!</source>
+                <target>К сожалению вознакла ошибка: возможно не найдена указанная страница.</target>
+            </trans-unit>
+            <trans-unit id="homepage">
+                <source>homepage</source>
+                <target>главную страницу.</target>
+            </trans-unit>
+            <trans-unit id="Something is wrong">
+                <source>Something is wrong</source>
+                <target>Для продолжения работы перейдите на </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
