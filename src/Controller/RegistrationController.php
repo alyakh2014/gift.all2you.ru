@@ -59,9 +59,11 @@ class RegistrationController extends Controller
             //Устанавливаем пользователю роль по умолчанию. 2 - роль пользователя
             $defrole = $this->getDoctrine()
                 ->getRepository(Role::class)
-                ->findOneBy(['name' => 'ROLE_USER']);
-             $user->setRoles([$defrole]);
+                ->findAll(['name' => 'ROLE_USER']);
 
+            foreach($defrole as $role):
+             $user->setRoles([$role]);
+            endforeach;
             // 4) сохраните Пользователя!
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);

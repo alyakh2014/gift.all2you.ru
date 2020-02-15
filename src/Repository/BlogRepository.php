@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Blog;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Persistence\ManagerRegistry;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\ORM\QueryBuilder;
@@ -16,10 +17,15 @@ use Doctrine\ORM\QueryBuilder;
  */
 class BlogRepository extends ServiceEntityRepository
 {
-    public function __construct(RegistryInterface $registry)
+/*    public function __construct(RegistryInterface $registry)
     {
         parent::__construct($registry, Blog::class);
-    }
+    }*/
+
+public function __construct(ManagerRegistry $registry)
+{
+    parent::__construct($registry, Blog::class);
+}
 
     /**
      * @param string|null $term

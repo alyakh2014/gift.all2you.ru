@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="{{ _charset }}" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
+    <title>{{ "An Error Occurred" | trans }}: {{ status_text }}</title>
+    <style>
+
+        body, html{
+            height: 100%;
+        }
+
+        .error_page-bam{
+            position: relative;
+            display: flex;
+            height: inherit;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container text-center error_page-bam">
+    <div class="wrapper error_page-bam__wrapper">
+    <h1>{{ "An Error Occurred" | trans }}</h1>
+    <h2>{{ "Page not found or other error!" | trans }}</h2>
+    <div>
+        {{ 'Something is wrong' | trans }} <a href="{{ path('blog_index') }}">{{ 'homepage' | trans }}</a>
+    </div>
+    </div>
+</div>
+</body>
+</html>

@@ -8914,3 +8914,16 @@ a.js-colorlib-nav-toggle.colorlib-nav-toggle{
   display:inline-flex;
   float:left;
 }
+
+
+.pagination .disabled .page-link, .pagination .page-link[rel='next'], .pagination .page-link[rel='prev']
+{
+  border: none!important;
+  width: auto!important;
+  background: none!important;
+}
+
+.pagination .page-link[rel='next']:active, .pagination .page-link[rel='prev']:active
+{
+  border: none;
+}

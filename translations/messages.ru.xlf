@@ -446,6 +446,14 @@
                 <source>Something is wrong</source>
                 <target>Для продолжения работы перейдите на </target>
             </trans-unit>
+            <trans-unit id="label_next">
+                <source>label_next</source>
+                <target>Вперёд</target>
+            </trans-unit>
+            <trans-unit id="label_previous">
+                <source>label_previous</source>
+                <target>Назад</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

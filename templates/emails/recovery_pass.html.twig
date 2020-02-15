@@ -1,0 +1,16 @@
+{# templates/emails/feedback.html.twig #}
+
+<h3>{{ name }}!</h3>
+
+<div>
+    Вы сделала запрос на восстановления пароля на сайте gift.all2you.ru.<br>
+    Если это были не Вы, просто проигнорируйте данное письмо.<br>
+    Если это были Вы - перейдите <a href="http://www.{{ control_string }}" rel="nofollow">по ссылке</a> {{ control_string }}
+</div>
+
+Ваш лучший подарок!
+
+{# Makes an absolute URL to the /images/logo.png file #}
+<!--img src="{# absolute_url(asset('images/logo.png')) #}">
+
+registration.html.twig

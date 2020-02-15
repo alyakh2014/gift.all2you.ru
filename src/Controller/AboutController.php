@@ -77,6 +77,14 @@ class AboutController extends AbstractController
     }
 
     /**
+     * @Route("/")
+     */
+    public function main(): Response
+    {
+        return $this->redirectToRoute('blog_index');
+    }
+
+    /**
      * @Route("/admin")
      */
     public function admin(): Response

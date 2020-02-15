@@ -206,13 +206,6 @@ class UserController extends AbstractController
          ]);
     }
 
-    /**
-     * @Route("/{id}", name="user_show", methods="GET")
-     */
-    public function show(User $user): Response
-    {
-        return $this->redirectToRoute('user_index');//$this->render('user/show.html.twig', ['user' => $user]);
-    }
 
     /**
      * @Route("/{id}", name="user_delete", methods="DELETE")
@@ -227,5 +220,15 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('user_index');
     }
+
+    /**
+     * @Route("/{id}", name="user_show", methods="GET")
+     */
+    public function show(User $user): Response
+    {
+        return $this->redirectToRoute('user_index');//$this->render('user/show.html.twig', ['user' => $user]);
+    }
+
+
 
 }

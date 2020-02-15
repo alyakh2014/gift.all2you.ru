@@ -1,0 +1,37 @@
+{% extends 'base_oneside.html.twig' %}
+{% block title %}{{ 'Blog index' | trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'Blogs all' | trans }}</h1>
+
+    <table class="table bem blog-admin">
+        <tbody>
+        {% for blog in blogs %}
+            <tr>
+                <td>{{ blog.id }}</td>
+                <td class="blog-admin__title">{{ blog.title }}</td>
+            </tr>
+            <tr>
+                <td class="blog-admin__img"><img src='{{ asset("images/" ~ blog.image  ) }}' class="img-fluid" alt=""></td>
+                <td class="blog-admin__description">
+                    {{ blog.description }}<br/>
+                    {{ blog.dateCreate ? blog.dateCreate|date('Y-m-d') : '' }}<br/>
+                    {{ blog.author }}<br>
+                </td>
+            </tr>
+            <tr>
+                <td class="blog-admin__refs" colspan="2">
+                    <a href="{{ path('blog_show', {'id': blog.id}) }}">{{ 'show' | trans }}</a><br>
+                    <a href="{{ path('blog_edit', {'id': blog.id}) }}">{{ 'edit' | trans }}</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('blog_new') }}">{{ 'Create new Blog' | trans }}</a>
+{% endblock %}
