@@ -6,6 +6,7 @@ use App\Entity\Feedback;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 
 class FeedbackType extends AbstractType
 {
@@ -16,7 +17,7 @@ class FeedbackType extends AbstractType
             ->add('email')
             ->add('subject')
             ->add('message')
-        ;
+            ->add('captchaCode');
     }
 
     public function configureOptions(OptionsResolver $resolver)

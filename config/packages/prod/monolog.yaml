@@ -1,4 +1,5 @@
 monolog:
+    channels: ['http', 'controller']
     handlers:
         main:
             type: fingers_crossed
@@ -23,3 +24,13 @@ monolog:
             handler: deprecation
             max_level: info
             channels: ["php"]
+        http:
+            type: rotating_file
+            path: "%kernel.logs_dir%/http.%kernel.environment%.log"
+            max_files: 5
+            channels: ['http']
+        controller:
+            type: rotating_file
+            path: "%kernel.logs_dir%/controller.%kernel.environment%.log"
+            max_files: 5
+            channels: ['controller']

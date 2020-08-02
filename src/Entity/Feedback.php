@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\FeedbackRepository")
@@ -35,6 +36,11 @@ class Feedback
      * @ORM\Column(type="text")
      */
     private $message;
+
+    /**
+     * @CaptchaAssert\ValidCaptcha(message = "Не правильно введён код с картинки")
+     */
+    protected $captchaCode;
 
     public function getId(): ?int
     {
@@ -87,5 +93,15 @@ class Feedback
         $this->message = $message;
 
         return $this;
+    }
+
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
     }
 }

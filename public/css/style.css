@@ -8824,6 +8824,11 @@ textarea.form-control {
   width:100%;
 }
 
+#feedback_form #ExampleCaptcha_CaptchaIconsDiv a#ExampleCaptcha_SoundLink,
+#feedback_form #ExampleCaptcha_CaptchaDiv #ExampleCaptcha_CaptchaImageDiv a{
+  display:none!important;
+}
+
 /*Partners page*/
 .partners_picture{
   width:50%;

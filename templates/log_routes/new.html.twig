@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New LogRoutes{% endblock %}
+
+{% block body %}
+    <h1>Create new LogRoutes</h1>
+
+    {{ include('log_routes/_form.html.twig') }}
+
+    <a href="{{ path('log_routes_index') }}">back to list</a>
+{% endblock %}

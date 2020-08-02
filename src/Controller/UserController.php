@@ -26,6 +26,9 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/", name="user_index", methods="GET")
+     * @param UserRepository $userRepository
+     * @param AuthorizationCheckerInterface $authChecker
+     * @return Response
      */
     public function index(UserRepository $userRepository, AuthorizationCheckerInterface $authChecker): Response
     {
@@ -40,6 +43,9 @@ class UserController extends AbstractController
 
     /**
      * @Route("/new", name="user_new", methods="GET|POST")
+     * @param Request $request
+     * @param AuthorizationCheckerInterface $authChecker
+     * @return Response
      */
     public function userNew(Request $request,  AuthorizationCheckerInterface $authChecker): Response
     {

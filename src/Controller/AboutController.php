@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Feedback;
 use App\Form\FeedbackType;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptcha;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -39,6 +41,10 @@ class AboutController extends AbstractController
 
     /**
      * @Route("/partners", name="about_partners")
+     * @param PartnersRepository $partnersRepository
+     * @param Request $request
+     * @param PaginatorInterface $paginator
+     * @return Response
      */
     public function partners(
         PartnersRepository $partnersRepository,
@@ -46,7 +52,6 @@ class AboutController extends AbstractController
         PaginatorInterface $paginator
     ): Response
     {
-
         $queryBuilder = $partnersRepository->getWithSearchQueryBuilder();
         $pagination = $paginator->paginate(
             $queryBuilder, /* query NOT result */
@@ -72,6 +77,10 @@ class AboutController extends AbstractController
             ->add('subject', TextareaType::class)
             ->add('message', TextareaType::class)
             ->add('save', SubmitType::class, array('label'=>'Send new message'))
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha',
+                'label'=>' ',
+            ))
             ->getForm();
         return $this->render('feedback/new.html.twig', ['form'=> $form->createView()]);
     }

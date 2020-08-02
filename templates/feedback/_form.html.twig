@@ -2,7 +2,7 @@
     {{ form_errors(form) }}
 
 <div class="form-group">
-    !!!!{{ form_label(form.name) }}
+    {{ form_label(form.name) }}
     {{ form_errors(form.name) }}
     {{ form_widget(form.name, {'attr':{'class':'form-control'}}) }}
     {{ form_help(form.name) }}
@@ -24,6 +24,10 @@
     {{ form_errors(form.message) }}
     {{ form_widget(form.message, {'attr': {'class': 'form-control', 'rows': 8}}) }}
     {{ form_help(form.message) }}
+</div>
+<div class="form-group">
+{{ form_errors(form.captchaCode) }}
+{{ form_widget(form.captchaCode) }}
 </div>
 <div class="form-group">
     {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}

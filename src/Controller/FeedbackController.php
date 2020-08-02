@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\Entity\Feedback;
 use App\Form\FeedbackType;
 use App\Repository\FeedbackRepository;
+use App\Service\MessageGenerator;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints\ValidCaptcha;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,7 +34,8 @@ class FeedbackController extends AbstractController
      */
     public function new(
         Request $request,
-        \Swift_Mailer $mailer
+        \Swift_Mailer $mailer,
+        MessageGenerator $messageGenerator
     ): Response
     {
 
@@ -43,6 +47,10 @@ class FeedbackController extends AbstractController
             ->add('email', TextType::class)
             ->add('subject', TextareaType::class)
             ->add('message', TextareaType::class)
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha',
+                'label'=>' '
+            ))
             ->add('save', SubmitType::class, array('label'=>'Send new message'))
             ->getForm();
 
@@ -52,9 +60,10 @@ class FeedbackController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($feedback);
             $em->flush();
+            $message = $messageGenerator->getHappyMessage();
             $this->addFlash(
                 'notice',
-                'Ваше обращение принято!'
+                $message
             );
 
             // создание объекта сообщения
