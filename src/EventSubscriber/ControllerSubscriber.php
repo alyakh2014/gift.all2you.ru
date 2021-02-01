@@ -12,14 +12,14 @@ use Symfony\Component\HttpKernel\KernelEvents;
 class ControllerSubscriber implements EventSubscriberInterface
 {
 
-    /**
-     * @var Logger
-     */
-    private $logger;
+//    /**
+//     * @var Logger
+//     */
+//    private $logger;
 
     public function __construct(ContainerInterface $container)
     {
-        $this->logger = $container->get('monolog.logger.controller');
+        //$this->logger = $container->get('monolog.logger.controller');
     }
 
     /**

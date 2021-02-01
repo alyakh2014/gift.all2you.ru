@@ -28,8 +28,8 @@ class HttpRequestListener
      */
     public function __construct(ContainerInterface $container, $em)
     {
-        $this->logger = $container->get('monolog.logger.http');
-        $this->em = $em;
+//        $this->logger = $container->get('monolog.logger.http');
+//        $this->em = $em;
     }
 
     public function onKernelRequest(RequestEvent $event){
