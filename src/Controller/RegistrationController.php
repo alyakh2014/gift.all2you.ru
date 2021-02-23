@@ -11,7 +11,7 @@ namespace App\Controller;
 use App\Form\UserType;
 use App\Entity\User;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use App\Entity\Role;
 
 
-class RegistrationController extends Controller
+class RegistrationController extends AbstractController
 {
     /**
      * @Route("/register", name="user_registration")

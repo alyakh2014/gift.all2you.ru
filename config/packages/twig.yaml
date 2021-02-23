@@ -2,3 +2,5 @@ twig:
     default_path: '%kernel.project_dir%/templates'
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    #new in symfony 4.4
+    exception_controller: null

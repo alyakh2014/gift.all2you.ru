@@ -59,6 +59,9 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            //todo разобраться, почему пароль пустой
+            if(!$user->getPassword() && $user->getPlainPassword()) $user->setPassword($user->getPlainPassword());
             $em->persist($user);
             $em->flush();
             return $this->redirectToRoute('user_index');
@@ -141,12 +144,15 @@ class UserController extends AbstractController
 
     /**
      * @Route("/edit", name="user_edit", methods="GET|POST")
+     * @param Request $request
+     * @param AuthorizationCheckerInterface $authChecker
+     * @return Response
      */
     public function edit(Request $request, AuthorizationCheckerInterface $authChecker): Response
     {
 
       if($request->get('id') && $authChecker->isGranted('ROLE_ADMIN')){
-          $id = $request->get('id');
+         $id = $request->get('id');
          $user = $this->getDoctrine()
               ->getRepository(User::class)
               ->findOneBy(["id" => $id]);
@@ -164,7 +170,7 @@ class UserController extends AbstractController
                 'notice',
                 'Профиль успешно отредактирован!'
             );
-            return $this->redirectToRoute('user_edit', ['id' => $id]);
+            return $this->redirectToRoute('user_edit', ['id' => $id?? null]);
         }
 
         return $this->render('user/edit.html.twig', [
@@ -175,6 +181,9 @@ class UserController extends AbstractController
 
     /**
      * @Route("/change-password", name="user_change_password",  methods={"GET", "POST"})
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @return Response
      */
     public function changePassword(Request $request, UserPasswordEncoderInterface $encoder): Response
     {

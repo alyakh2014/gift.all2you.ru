@@ -5,6 +5,9 @@
     "captcha-com/symfony-captcha-bundle": {
         "version": "4.2.12"
     },
+    "composer/ca-bundle": {
+        "version": "1.2.9"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -88,6 +91,9 @@
     },
     "egulias/email-validator": {
         "version": "2.1.5"
+    },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.3"
     },
     "knplabs/knp-components": {
         "version": "v1.3.10"
@@ -364,6 +370,9 @@
     },
     "symfony/property-info": {
         "version": "v4.1.4"
+    },
+    "symfony/proxy-manager-bridge": {
+        "version": "v4.4.19"
     },
     "symfony/routing": {
         "version": "4.0",
